@@ -14,6 +14,8 @@ module.exports = {
   contentFor: function(type) {
     if (type === 'head') {
       var str = '<script>window.Polymer = window.Polymer || {};';
+      // (!) shadow DOM is required for Polymer and Ember to interoperate
+      str += 'window.Polymer.dom = "shadow";</script>';
       return str;
     }
   }
