@@ -1,6 +1,7 @@
 {
   "name": "ember-polymer",
   "version": "0.0.0",
+  "demoURL": "https://dunnkers.github.io/ember-polymer/",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
     "doc": "doc",

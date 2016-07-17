@@ -35,6 +35,10 @@ We now need to import the element. Add a file `elements.html` in `/app` with the
 
 That's it! You should now be able to use the `<paper-button>` element in all its glory!
 
+## Demo
+
+[https://dunnkers.github.io/ember-polymer/](https://dunnkers.github.io/ember-polymer/)
+
 ## Configuration
 
 The addon can be configured in the `config/environment.js` file as such:
