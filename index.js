@@ -11,7 +11,7 @@ module.exports = {
   included: function(app) {
     this._super.included.apply(this, arguments);
 
-    this.addonOptions = this.app.options['emberPolymer'] || {};
+    this.addonOptions = this.app.options['ember-polymer'] || {};
     this.htmlImportsDir = this.addonOptions.htmlImportsDir || 'app';
     this.htmlImportsFile = this.addonOptions.htmlImportsFile || 'elements.html';
     this.vulcanizedOutput = this.addonOptions.vulcanizedOutput ||
@@ -30,19 +30,19 @@ module.exports = {
       str += '<link rel="import" href="assets/vulcanized.html">';
       return str;
     }
-  }
+  },
 
   // vulcanize elements, starting at specified html imports file
   postprocessTree: function(type, tree) {
     if (type === 'all') {
       if (!this.htmlImportsFile.endsWith('.html')) { // wrong extension
-        throw new Error('Ember-polymer build failed. ' +
+        throw new Error('ember-polymer build failed. ' +
           'The html import you specified is not of html extension, ' +
           'this is however required by the vulcanize tool. ' +
           'Try importing custom elements using a html file.');
       }
       if (!this.vulcanizedOutput.endsWith('.html')) { // wrong extension
-        throw new Error('Ember-polymer vulcanize output file not a html file.');
+        throw new Error('ember-polymer vulcanize output file not a html file.');
       }
 
       var filePath = path.join(this.app.project.root,
@@ -63,9 +63,5 @@ module.exports = {
     }
 
     return tree;
-  }
-
-  ,isDevelopingAddon: function() {
-    return true;
   }
 };
