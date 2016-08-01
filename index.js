@@ -12,8 +12,8 @@ module.exports = {
     this._super.included.apply(this, arguments);
 
     this.addonOptions = this.app.options['ember-polymer'] || {};
-    this.htmlImportsDir = this.addonOptions.htmlImportsDir || 'app';
-    this.htmlImportsFile = this.addonOptions.htmlImportsFile || 'elements.html';
+    this.htmlImportsFile = this.addonOptions.htmlImportsFile ||
+      path.join('app', 'elements.html');
     this.vulcanizedOutput = this.addonOptions.vulcanizedOutput ||
       path.join('assets', 'vulcanized.html');
     this.projectTree = app.trees.app;
@@ -40,11 +40,10 @@ module.exports = {
       }
 
       var filePath = path.join(this.app.project.root,
-                               this.htmlImportsDir,
                                this.htmlImportsFile);
       if (fs.existsSync(filePath)) {
         var vulcanized = new Vulcanize(this.projectTree, {
-          input: this.htmlImportsFile,
+          input: path.basename(this.htmlImportsFile),
           output: this.vulcanizedOutput,
           inlineCss: true
         });
@@ -54,13 +53,8 @@ module.exports = {
           annotation: 'Merge (ember-polymer merge vulcanized with addon tree)'
         });
       } else {
-        console.warn(`[ember-polymer] The htmlImportsDir or htmlImportsFile
-          you specified does not exist or is invalid. Make sure you configured
-          your html imports file correctly in the addon settings, the default
-          file is app/elements.html.
-
-          If you no longer use ember-polymer and wish to get rid of this
-          message, consider removing this addon.`);
+        this.ui.writeWarnLine('[ember-polymer] The `htmlImportsFile` ' +
+          `at \`${this.htmlImportsFile}\` does not exist.`);
       }
     }
 

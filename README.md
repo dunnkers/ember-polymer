@@ -6,7 +6,8 @@ components in your ember apps today.
 
 ## Requirements
 
-This addon forces Polymer to use Shadow DOM. Browsers that do not natively support Shadow DOM will be supplied with the polyfill. **Do note that this has implications on performance.**
+This addon forces Polymer to use Shadow DOM. Browsers that do not natively support Shadow DOM will be supplied with the polyfill. **Note that using a polyfilled Shadow DOM
+results in slightly slower rendering.**
 
 ## Installation
 
@@ -49,21 +50,13 @@ ENV['ember-polymer'] = {
 }
 ```
 
-**htmlImportsDir**
-
-Defaults to `app`. The directory the html imports file is found in.
-
-```js
-  htmlImportsDir: 'somedir'
-```
-
 **htmlImportsFile**
 
-Defaults to `elements.html`. The file that html imports are done in, and is
+Defaults to `app/elements.html`. The file that html imports are done in, and is
 used by the addon to [vulcanize](https://github.com/Polymer/vulcanize).
 
 ```js
-  htmlImportsFile: 'htmlimports.html'
+  htmlImportsFile: 'app/elements.html'
 ```
 
 **vulcanizedOutput**
@@ -72,7 +65,7 @@ Defaults to `assets/vulcanized.html`. The output file for all vulcanized
 html code and styling.
 
 ```js
-  vulcanizedOutput: 'vulcanizedelements.html'
+  vulcanizedOutput: 'app/vulcanized.html'
 ```
 
 ## About
