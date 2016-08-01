@@ -24,11 +24,11 @@ module.exports = {
   // insert polymer and vulcanized elements
   contentFor: function(type) {
     if (type === 'head') {
-      var str = '<script>window.Polymer = window.Polymer || {};';
-      // (!) shadow DOM is required for Polymer and Ember to interoperate
-      str += 'window.Polymer.dom = "shadow";</script>';
-      str += '<link rel="import" href="assets/vulcanized.html">';
-      return str;
+      return `<script>
+                window.Polymer = window.Polymer || {};
+                window.Polymer.dom = "shadow";
+              </script>
+              <link rel="import" href="assets/vulcanized.html">`;
     }
   },
 
