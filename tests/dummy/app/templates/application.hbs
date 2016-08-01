@@ -14,58 +14,7 @@
       <div>Ember Polymer dummy app</div>
     </paper-toolbar>
     <div class="outlet">
-      <p>
-        <paper-button raised>button</paper-button>
-      </p>
-      <p>
-        <paper-button id="btn">Status</paper-button>
-        <paper-badge icon="favorite" for="btn" label="favorite icon"></paper-badge>
-      </p>
-      <p>
-        <paper-checkbox checked>label</paper-checkbox>
-      </p>
-      <p>
-        <paper-icon-button icon="menu"></paper-icon-button>
-      </p>
-      <p>
-        <paper-input label="Input label"></paper-input>
-      </p>
-      <p>
-        <paper-textarea label="Textarea label"></paper-textarea>
-      </p>
-      <p>
-        <paper-input char-counter label="Input label"></paper-input>
-      </p>
-      <p>
-        <paper-fab mini icon="favorite"></paper-fab>
-      </p>
-      <p>
-        <paper-progress value="10"></paper-progress>
-      </p>
-      <p>
-        <paper-progress value="10" secondary-progress="30"></paper-progress>
-      </p>
-      <p>
-        <paper-spinner alt="Loading something important" active></paper-spinner>
-      </p>
-      <p>
-        <paper-tabs selected="0">
-          <paper-tab>TAB 1</paper-tab>
-          <paper-tab>TAB 2</paper-tab>
-          <paper-tab>TAB 3</paper-tab>
-        </paper-tabs>
-      </p>
-      <p>
-        <paper-slider min="10" max="200" value="110"></paper-slider>
-      </p>
-      <p>
-        <label id="label3">Dinosaurs:</label>
-        <paper-radio-group selected="b" aria-labelledby="label3">
-          <paper-radio-button name="a">allosaurus</paper-radio-button>
-          <paper-radio-button name="b">brontosaurus</paper-radio-button>
-          <paper-radio-button name="d" disabled>diplodocus</paper-radio-button>
-        </paper-radio-group>
-      </p>
+      {{outlet}}
     </div>
   </paper-header-panel>
 </paper-drawer-panel>
