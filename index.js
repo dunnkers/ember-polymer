@@ -32,11 +32,12 @@ module.exports = {
     }
   },
 
-  // vulcanize elements, starting at specified html imports file
   postprocessTree: function(type, tree) {
     if (type === 'all') {
-      if (!this.vulcanizedOutput.endsWith('.html')) { // wrong extension
-        throw new Error('ember-polymer vulcanize output file not a html file.');
+      // vulcanize elements, starting at specified html imports file
+      if (path.extname(this.vulcanizedOutput) !== '.html') {
+        throw new Error('[ember-polymer] The `vulcanizedOutput` file ' +
+          `is not a .html file. You specified '${this.vulcanizedOutput}'`);
       }
 
       var filePath = path.join(this.app.project.root,
