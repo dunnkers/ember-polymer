@@ -6,7 +6,7 @@ var path = require('path');
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
     'ember-polymer': {
-      htmlImportsDir: path.join('tests', 'dummy', 'app')
+      htmlImportsFile: path.join('tests', 'dummy', 'app', 'elements.html')
     }
   });
 

@@ -54,8 +54,8 @@ module.exports = {
           annotation: 'Merge (ember-polymer merge vulcanized with addon tree)'
         });
       } else {
-        this.ui.writeWarnLine('[ember-polymer] The `htmlImportsFile` ' +
-          `at \`${this.htmlImportsFile}\` does not exist.`);
+        this.ui.writeWarnLine('[ember-polymer] No `htmlImports` file ' +
+          `exists at '${this.htmlImportsFile}'`);
       }
     }
 
