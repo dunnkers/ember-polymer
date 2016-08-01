@@ -35,12 +35,6 @@ module.exports = {
   // vulcanize elements, starting at specified html imports file
   postprocessTree: function(type, tree) {
     if (type === 'all') {
-      if (!this.htmlImportsFile.endsWith('.html')) { // wrong extension
-        throw new Error('ember-polymer build failed. ' +
-          'The html import you specified is not of html extension, ' +
-          'this is however required by the vulcanize tool. ' +
-          'Try importing custom elements using a html file.');
-      }
       if (!this.vulcanizedOutput.endsWith('.html')) { // wrong extension
         throw new Error('ember-polymer vulcanize output file not a html file.');
       }
