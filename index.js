@@ -28,7 +28,7 @@ module.exports = {
                 window.Polymer = window.Polymer || {};
                 window.Polymer.dom = "shadow";
               </script>
-              <link rel="import" href="assets/vulcanized.html">`;
+              <link rel="import" href="${this.vulcanizedOutput}">`;
     }
   },
 
