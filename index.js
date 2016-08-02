@@ -1,9 +1,9 @@
 /* jshint node: true */
 'use strict';
-var fs = require('fs');
-var path = require('path');
-var MergeTrees = require('broccoli-merge-trees');
-var Vulcanize = require('broccoli-vulcanize');
+let fs = require('fs');
+let path = require('path');
+let MergeTrees = require('broccoli-merge-trees');
+let Vulcanize = require('broccoli-vulcanize');
 
 const defaultVulcanizeOptions = {
   inlineCss: true
@@ -45,7 +45,7 @@ module.exports = {
           `is not a .html file. You specified '${this.vulcanizeOutput}'`);
       }
 
-      var filePath = path.join(this.app.project.root,
+      let filePath = path.join(this.app.project.root,
                                this.htmlImportsFile);
       if (fs.existsSync(filePath)) {
         // vulcanize html files, starting at specified html imports file
@@ -54,7 +54,7 @@ module.exports = {
           output: this.vulcanizeOutput
         });
 
-        var vulcanized = new Vulcanize(this.projectTree, options);
+        let vulcanized = new Vulcanize(this.projectTree, options);
 
         return new MergeTrees([ tree, vulcanized ], {
           overwrite: true,
