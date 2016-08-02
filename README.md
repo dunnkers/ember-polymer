@@ -68,6 +68,18 @@ html code and styling.
   vulcanizedOutput: 'app/vulcanized.html'
 ```
 
+**vulcanizeOptions**
+
+Allow one to set
+[options](https://github.com/Polymer/vulcanize#using-vulcanize-programmatically)
+used in vulcanize. Defaults to:
+
+```js
+  vulcanizeOptions: {
+    inlineCss: true
+  }
+```
+
 ## About
 
 This addon was sponsored by [Fabriquartz](http://www.fabriquartz.com/), a startup
