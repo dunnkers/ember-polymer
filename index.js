@@ -18,7 +18,7 @@ module.exports = {
     this.addonOptions = this.app.options['ember-polymer'] || {};
     this.htmlImportsFile = this.addonOptions.htmlImportsFile ||
       path.join('app', 'elements.html');
-    this.vulcanizedOutput = this.addonOptions.vulcanizedOutput ||
+    this.vulcanizeOutput = this.addonOptions.vulcanizeOutput ||
       path.join('assets', 'vulcanized.html');
     this.vulcanizeOptions = Object.assign(defaultVulcanizeOptions,
       this.addonOptions.vulcanizeOptions);
@@ -34,15 +34,15 @@ module.exports = {
                 window.Polymer = window.Polymer || {};
                 window.Polymer.dom = "shadow";
               </script>
-              <link rel="import" href="${this.vulcanizedOutput}">`;
+              <link rel="import" href="${this.vulcanizeOutput}">`;
     }
   },
 
   postprocessTree: function(type, tree) {
     if (type === 'all') {
-      if (path.extname(this.vulcanizedOutput) !== '.html') {
-        throw new Error('[ember-polymer] The `vulcanizedOutput` file ' +
-          `is not a .html file. You specified '${this.vulcanizedOutput}'`);
+      if (path.extname(this.vulcanizeOutput) !== '.html') {
+        throw new Error('[ember-polymer] The `vulcanizeOutput` file ' +
+          `is not a .html file. You specified '${this.vulcanizeOutput}'`);
       }
 
       var filePath = path.join(this.app.project.root,
@@ -51,7 +51,7 @@ module.exports = {
         // vulcanize html files, starting at specified html imports file
         let options = Object.assign(this.vulcanizeOptions, {
           input: path.basename(this.htmlImportsFile),
-          output: this.vulcanizedOutput
+          output: this.vulcanizeOutput
         });
 
         var vulcanized = new Vulcanize(this.projectTree, options);

@@ -59,13 +59,13 @@ used by the addon to [vulcanize](https://github.com/Polymer/vulcanize).
   htmlImportsFile: 'app/elements.html'
 ```
 
-**vulcanizedOutput**
+**vulcanizeOutput**
 
 Defaults to `assets/vulcanized.html`. The output file for all vulcanized
 html code and styling.
 
 ```js
-  vulcanizedOutput: 'app/vulcanized.html'
+  vulcanizeOutput: 'assets/vulcanized.html'
 ```
 
 **vulcanizeOptions**
