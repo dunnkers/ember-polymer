@@ -2,7 +2,7 @@
   "name": "ember-polymer",
   "version": "0.0.0",
   "demoURL": "https://dunnkers.github.io/ember-polymer/",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Allows you to use Polymer in your Ember application.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -12,11 +12,15 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "",
+  "repository": "https://www.github.com/dunnkers/ember-polymer",
   "engines": {
     "node": ">= 4.0.0"
   },
-  "author": "",
+  "author": {
+    "name": "Jeroen Overschie",
+    "email": "info@periodpoint.com",
+    "url": "https://github.com/dunnkers"
+  },
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
@@ -40,7 +44,11 @@
     "loader.js": "^4.0.1"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "polymer",
+    "web components",
+    "custom elements",
+    "polymer-project"
   ],
   "dependencies": {
     "broccoli-merge-trees": "^1.1.2",

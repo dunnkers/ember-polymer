@@ -1,4 +1,4 @@
-# ember-polymer
+# ember-polymer [![Build Status](https://travis-ci.com/dunnkers/ember-polymer.svg?branch=master)](https://travis-ci.com/dunnkers/ember-polymer)
 
 Be cool and use [Polymer](https://www.polymer-project.org/1.0/) and Ember together!
 This addon integrates Polymer with Ember, so you can use the power of custom web
@@ -6,8 +6,8 @@ components in your ember apps today.
 
 ## Requirements
 
-This addon forces Polymer to use Shadow DOM. Browsers that do not natively support Shadow DOM will be supplied with the polyfill. **Note that using a polyfilled Shadow DOM
-results in slightly slower rendering.**
+This addon forces Polymer to use Shadow DOM. Browsers that do not natively support Shadow DOM will be supplied with the polyfill. Note that using a polyfilled Shadow DOM
+results in slightly slower rendering.
 
 ## Installation
 
@@ -20,7 +20,7 @@ It is very likely that you want Polymer for its extensive paper elements library
 Functionality concerning these elements is contained in a separate addon.
 To install paper-elements:
 
-`ember install paper-elements`
+`ember install ember-polymer-paper`
 
 ## General usage
 
