@@ -1,4 +1,4 @@
-# ember-polymer [![Build Status](https://travis-ci.com/dunnkers/ember-polymer.svg?branch=master)](https://travis-ci.com/dunnkers/ember-polymer)
+# ember-polymer [![Build Status](https://travis-ci.org/dunnkers/ember-polymer.svg?branch=master)](https://travis-ci.org/dunnkers/ember-polymer)
 
 Be cool and use [Polymer](https://www.polymer-project.org/1.0/) and Ember together!
 This addon integrates Polymer with Ember, so you can use the power of custom web
