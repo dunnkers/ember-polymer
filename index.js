@@ -12,16 +12,18 @@ const defaultVulcanizeOptions = {
 module.exports = {
   name: 'ember-polymer',
 
-  included: function(app) {
+  included: function(appOrAddon) {
     this._super.included.apply(this, arguments);
 
-    this.addonOptions = this.app.options['ember-polymer'] || {};
-    this.htmlImportsFile = this.addonOptions.htmlImportsFile ||
+    let app = appOrAddon.app || appOrAddon;
+    let addonOptions = app.options['ember-polymer'] || {};
+
+    this.htmlImportsFile = addonOptions.htmlImportsFile ||
       path.join('app', 'elements.html');
-    this.vulcanizeOutput = this.addonOptions.vulcanizeOutput ||
+    this.vulcanizeOutput = addonOptions.vulcanizeOutput ||
       path.join('assets', 'vulcanized.html');
     this.vulcanizeOptions = Object.assign(defaultVulcanizeOptions,
-      this.addonOptions.vulcanizeOptions);
+      addonOptions.vulcanizeOptions);
     this.projectTree = app.trees.app;
 
     app.import(app.bowerDirectory + '/webcomponentsjs/webcomponents.min.js');
@@ -61,7 +63,7 @@ module.exports = {
           annotation: 'Merge (ember-polymer merge vulcanized with addon tree)'
         });
       } else {
-        this.ui.writeWarnLine('[ember-polymer] No `htmlImports` file ' +
+        this.ui.writeWarnLine('[ember-polymer] No html imports file ' +
           `exists at '${this.htmlImportsFile}'`);
       }
     }

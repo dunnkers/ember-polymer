@@ -70,7 +70,7 @@ html code and styling.
 
 **vulcanizeOptions**
 
-Allow one to set
+Allows you to set
 [options](https://github.com/Polymer/vulcanize#using-vulcanize-programmatically)
 used in vulcanize. Defaults to:
 
