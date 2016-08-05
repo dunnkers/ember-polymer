@@ -14,15 +14,6 @@ results in slightly slower rendering.
 `ember install ember-polymer`
 
 ## Usage
-## Using with paper elements
-
-It is very likely that you want Polymer for its extensive paper elements library.
-Functionality concerning these elements is contained in a separate addon.
-To install paper-elements:
-
-`ember install ember-polymer-paper`
-
-## General usage
 
 For any other custom element, you will have to first install it through bower. e.g.
 
