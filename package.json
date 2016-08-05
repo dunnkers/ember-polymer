@@ -12,7 +12,10 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "https://www.github.com/dunnkers/ember-polymer",
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/dunnkers/ember-polymer.git"
+  },
   "engines": {
     "node": ">= 4.0.0"
   },
