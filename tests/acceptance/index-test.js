@@ -7,7 +7,7 @@ test('visiting /', function(assert) {
   visit('/');
 
   andThen(function() {
-    assert.equal(this.currentURL(), '/');
+    assert.equal(currentURL(), '/');
   });
 
   andThen(function() {
@@ -16,7 +16,7 @@ test('visiting /', function(assert) {
     let testElement = () => {
       assert.ok(document.querySelector('paper-button').shadowRoot,
         'paper-button has shadowRoot');
-      assert.equal(this.$('paper-button').attr('role'), 'button',
+      assert.equal($('paper-button').attr('role'), 'button',
         'paper-button rendered successfully');
 
       done();
