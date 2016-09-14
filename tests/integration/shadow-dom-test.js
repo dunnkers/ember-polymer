@@ -16,6 +16,6 @@ test('Uses native Shadow DOM if available', function(assert) {
 
   assert.ok(document.querySelector('paper-button').shadowRoot,
     'paper-button has shadowRoot');
-  assert.equal(this.$('paper-button').attr('role'), 'button',
+  assert.equal($('paper-button').attr('role'), 'button',
     'role is attached to button immediately');
 });
