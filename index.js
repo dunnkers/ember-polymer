@@ -6,7 +6,8 @@ let MergeTrees = require('broccoli-merge-trees');
 let Vulcanize = require('broccoli-vulcanize');
 
 const defaultVulcanizeOptions = {
-  inlineCss: true
+  inlineCss: true,
+  inlineScripts: true
 };
 
 module.exports = {
