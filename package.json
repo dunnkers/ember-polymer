@@ -1,6 +1,6 @@
 {
   "name": "ember-polymer",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "demoURL": "https://dunnkers.github.io/ember-polymer/",
   "description": "Allows you to use Polymer in your Ember application.",
   "directories": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://www.github.com/dunnkers/ember-polymer.git"
+    "url": "https://github.com/dunnkers/ember-polymer.git"
   },
   "engines": {
     "node": ">= 4.0.0"
