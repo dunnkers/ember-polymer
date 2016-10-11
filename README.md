@@ -15,7 +15,7 @@ results in slightly slower rendering.
 
 ## Usage
 
-For any other custom element, you will have to first install it through bower. e.g.
+For any custom element, you will have to first install it through bower. e.g.
 
 `bower install PolymerElements/paper-button --save`
 
