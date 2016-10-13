@@ -1,7 +1,6 @@
 {
   "name": "ember-polymer",
   "version": "0.2.6",
-  "demoURL": "https://dunnkers.github.io/ember-polymer/",
   "description": "Allows you to use Polymer in your Ember application.",
   "directories": {
     "doc": "doc",
@@ -61,6 +60,7 @@
     "ember-cli-htmlbars": "^1.1.0"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "demoURL": "https://dunnkers.github.io/ember-polymer/",
   }
 }
