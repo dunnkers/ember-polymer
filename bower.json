@@ -4,9 +4,6 @@
     "ember": "~2.8.0",
     "ember-cli-shims": "0.1.1",
     "ember-qunit-notifications": "0.1.0",
-    "polymer": "^1.6.1",
-    "webcomponentsjs": "^0.7.22",
-    "paper-elements": "PolymerElements/paper-elements#^1.0.7",
-    "iron-icons": "PolymerElements/iron-icons#^1.1.3"
+    "polymer": "Polymer/polymer#~1.7.0"
   }
 }
