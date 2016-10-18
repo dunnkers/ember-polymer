@@ -6,7 +6,10 @@ var path = require('path');
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
     'ember-polymer': {
-      htmlImportsFile: path.join('tests', 'dummy', 'app', 'elements.html')
+      htmlImportsFile: path.join('tests', 'dummy', 'app', 'elements.html'),
+      vulcanizeOptions: {
+        stripExcludes: ['.*paper-styles\.html.*']
+      }
     }
   });
 
