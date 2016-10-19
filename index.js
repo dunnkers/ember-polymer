@@ -5,7 +5,7 @@ let fileExists = fs.existsSync;
 let path = require('path');
 let MergeTrees = require('broccoli-merge-trees');
 let Vulcanize = require('broccoli-vulcanize');
-let AutoElementImporter = require('./lib/auto-element-importer');
+let AutoImporter = require('./lib/auto-importer');
 let clone = require('clone');
 let assign = require('assign-deep');
 
@@ -47,7 +47,7 @@ module.exports = {
       this.options.htmlImportsFile);
 
     // auto-import elements
-    let autoImporter = new AutoElementImporter(this.project, this.options);
+    let autoImporter = new AutoImporter(this.project, this.options);
     autoImporter.autoImport();
 
     // import webcomponentsjs polyfill library
