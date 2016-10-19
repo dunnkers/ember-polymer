@@ -41,7 +41,10 @@ module.exports = {
     this.excludeElements = addonOptions.excludeElements || [];
 
     if (this.autoElementImport) {
-      this.autoElementImporter.autoElementImport(this);
+      let dir = this.autoElementImporter.writeImportsToFile(
+        this.excludeElements);
+      this.projectTree = dir;
+      this.htmlImportsFile = path.join(dir, 'html-imports.html');
     }
 
     app.import(app.bowerDirectory + '/webcomponentsjs/webcomponents.min.js');
