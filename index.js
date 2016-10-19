@@ -6,45 +6,17 @@ let path = require('path');
 let MergeTrees = require('broccoli-merge-trees');
 let Vulcanize = require('broccoli-vulcanize');
 let AutoImporter = require('./lib/auto-importer');
-let clone = require('clone');
-let assign = require('assign-deep');
-
-const defaultOptions = {
-  autoElementImport: true,
-  excludeElements: [],
-  htmlImportsFile: path.join('app', 'elements.html'),
-  vulcanizeOutput: path.join('assets', 'vulcanized.html'),
-  vulcanizeOptions: {
-    inlineCss: true,
-    inlineScripts: true
-  }
-};
+let Config = require('./lib/config');
 
 module.exports = {
   name: 'ember-polymer',
 
-  init: function() {
-    if (this._super.init) {
-      this._super.init.apply(this, arguments);
-    }
-
-    // clone default config
-    this.options = clone(defaultOptions);
-  },
-
   included: function(appOrAddon) {
     this._super.included.apply(this, arguments);
 
-    // retrieve addon options
+    // config
     let app = appOrAddon.app || appOrAddon;
-    let addonOptions = app.options[this.project.name()] || {};
-
-    // assign addon options to config
-    this.options = assign(this.options, addonOptions);
-    this.options.projectTree = app.trees.app;
-    // convert htmlImportsFile path to an absolute one
-    this.options.htmlImportsFile = path.join(app.project.root,
-      this.options.htmlImportsFile);
+    this.options = new Config(this.project, app);
 
     // auto-import elements
     let autoImporter = new AutoImporter(this.project, this.options);
