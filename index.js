@@ -19,7 +19,7 @@ module.exports = {
     this.options = new Config(this.project, app);
 
     // auto-import elements
-    let autoImporter = new AutoImporter(this.project, this.options);
+    let autoImporter = new AutoImporter(this.project, this.options, this.ui);
     autoImporter.autoImport();
 
     // import webcomponentsjs polyfill library
