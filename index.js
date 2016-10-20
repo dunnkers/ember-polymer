@@ -50,8 +50,8 @@ module.exports = {
 
     // a html imports file must exist
     if (!fileExists(this.options.htmlImportsFile)) {
-      this.ui.writeWarnLine('[ember-polymer] No html imports file ' +
-        `exists at '${this.htmlImportsFile}'`);
+      this.ui.writeWarnLine('No html imports file exists at ' +
+        `\`${this.options.relativeHtmlImportsFile}\` (ember-polymer)`);
       return tree;
     }
 
