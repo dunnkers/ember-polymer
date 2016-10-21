@@ -18,9 +18,11 @@ To use a custom element, just install it through bower.
 
 Done! ember-polymer detects that this is a custom element, and imports it automatically! ✨ You can now use the element:
 
-`<paper-button raised>Raised button</paper-button>`
+```html
+<paper-button raised>Raised button</paper-button>
+```
 
-### Manual import
+#### Manual import
 
 If your element is not automatically imported, its folder structure does not follow the polymer [guidelines](https://www.polymer-project.org/1.0/docs/tools/documentation#add-a-documentation-page-for-an-element-repo). To manually import this element, add a file `elements.html` in `/app`, and import the custom element:
 
