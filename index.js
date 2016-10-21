@@ -65,11 +65,5 @@ module.exports = {
       overwrite: true,
       annotation: 'Merge (ember-polymer merge vulcanize with addon tree)'
     });
-  },
-
-  postBuild() {
-    if (this.options.autoElementImport) {
-      quickTemp.remove(this, 'tmpImportsDir');
-    }
   }
 };
