@@ -49,6 +49,7 @@
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
+    "istanbul": "^0.4.5",
     "loader.js": "^4.0.1",
     "mocha": "^3.1.2",
     "mocha-lcov-reporter": "^1.2.0"
