@@ -9,7 +9,7 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember try:each && npm run-script node-test && npm run-script coverage",
+    "test": "ember try:each",
     "node-test": "mocha test/**/*.js",
     "coverage": "./upload-coverage.sh"
   },
