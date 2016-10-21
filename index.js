@@ -17,7 +17,7 @@ module.exports = {
 
     // config
     let app = appOrAddon.app || appOrAddon;
-    this.options = new Config(this.project, app);
+    this.options = new Config(app);
 
     // auto-import elements
     if (this.options.autoElementImport) {
