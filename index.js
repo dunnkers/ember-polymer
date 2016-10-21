@@ -1,7 +1,6 @@
 /* jshint node: true */
 'use strict';
 let fs = require('fs');
-let path = require('path');
 let fileExists = fs.existsSync;
 let writeFile = fs.writeFileSync;
 let MergeTrees = require('broccoli-merge-trees');
@@ -22,15 +21,13 @@ module.exports = {
 
     // auto-import elements
     if (this.options.autoElementImport) {
-      // create a temporary directory to store html imports in.
-      quickTemp.makeOrRemake(this, 'tmpImportsDir', this.name);
-
       // import elements
       let importer = new AutoImporter(this.project, this.options, this.ui);
       let autoImported = importer.importElements();
-      // write to temporary file
-      this.options.htmlImportsFile = path.join(this.tmpImportsDir,
-        path.basename(this.options.htmlImportsFile));
+
+      // create a temporary directory to store html imports in.
+      quickTemp.makeOrRemake(this, 'tmpImportsDir', this.name);
+      this.options.htmlImportsDir = this.tmpImportsDir;
       writeFile(this.options.htmlImportsFile, autoImported);
     }
 
@@ -62,7 +59,7 @@ module.exports = {
     }
 
     // merge normal tree and our vulcanize tree
-    let vulcanize = new Vulcanize(path.dirname(this.options.htmlImportsFile),
+    let vulcanize = new Vulcanize(this.options.htmlImportsDir,
                                   this.options.vulcanizeOptions);
     return new MergeTrees([ tree, vulcanize ], {
       overwrite: true,
