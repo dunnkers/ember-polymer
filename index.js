@@ -1,74 +1,75 @@
 /* jshint node: true */
 'use strict';
 let fs = require('fs');
-let path = require('path');
+let fileExists = fs.existsSync;
+let writeFile = fs.writeFileSync;
 let MergeTrees = require('broccoli-merge-trees');
 let Vulcanize = require('broccoli-vulcanize');
-
-const defaultVulcanizeOptions = {
-  inlineCss: true,
-  inlineScripts: true
-};
+let quickTemp = require('quick-temp');
+let AutoImporter = require('./lib/auto-importer');
+let Config = require('./lib/config');
 
 module.exports = {
   name: 'ember-polymer',
 
-  included: function(appOrAddon) {
+  included(appOrAddon) {
     this._super.included.apply(this, arguments);
 
+    // config
     let app = appOrAddon.app || appOrAddon;
-    let addonOptions = app.options['ember-polymer'] || {};
+    this.options = new Config(app);
 
-    this.htmlImportsFile = addonOptions.htmlImportsFile ||
-      path.join('app', 'elements.html');
-    this.vulcanizeOutput = addonOptions.vulcanizeOutput ||
-      path.join('assets', 'vulcanized.html');
-    this.vulcanizeOptions = Object.assign(defaultVulcanizeOptions,
-      addonOptions.vulcanizeOptions);
-    this.projectTree = app.trees.app;
+    // auto-import elements
+    if (this.options.autoElementImport) {
+      // import elements
+      let importer = new AutoImporter(this.project, this.options, this.ui);
+      let autoImported = importer.importElements();
 
-    app.import(app.bowerDirectory + '/webcomponentsjs/webcomponents.min.js');
+      // create a temporary directory to store html imports in.
+      quickTemp.makeOrRemake(this, 'tmpImportsDir', this.name);
+      this.options.htmlImportsDir = this.tmpImportsDir;
+      writeFile(this.options.htmlImportsFile, autoImported);
+    }
+
+    // import webcomponentsjs polyfill library
+    app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents.min.js`);
   },
 
   // insert polymer and vulcanized elements
-  contentFor: function(type) {
+  contentFor(type) {
     if (type === 'head') {
       return `<script>
                 window.Polymer = window.Polymer || {};
                 window.Polymer.dom = "shadow";
               </script>
-              <link rel="import" href="/${this.vulcanizeOutput}">`;
+              <link rel="import" href="/${this.options.vulcanizeOutput}">`;
     }
   },
 
-  postprocessTree: function(type, tree) {
-    if (type === 'all') {
-      if (path.extname(this.vulcanizeOutput) !== '.html') {
-        throw new Error('[ember-polymer] The `vulcanizeOutput` file ' +
-          `is not a .html file. You specified '${this.vulcanizeOutput}'`);
-      }
-
-      let filePath = path.join(this.app.project.root,
-                               this.htmlImportsFile);
-      if (fs.existsSync(filePath)) {
-        // vulcanize html files, starting at specified html imports file
-        let options = Object.assign(this.vulcanizeOptions, {
-          input: path.basename(this.htmlImportsFile),
-          output: this.vulcanizeOutput
-        });
-
-        let vulcanized = new Vulcanize(this.projectTree, options);
-
-        return new MergeTrees([ tree, vulcanized ], {
-          overwrite: true,
-          annotation: 'Merge (ember-polymer merge vulcanized with addon tree)'
-        });
-      } else {
-        this.ui.writeWarnLine('[ember-polymer] No html imports file ' +
-          `exists at '${this.htmlImportsFile}'`);
-      }
+  postprocessTree(type, tree) {
+    if (type !== 'all') {
+      return tree;
     }
 
-    return tree;
+    // a html imports file must exist
+    if (!fileExists(this.options.htmlImportsFile)) {
+      this.ui.writeWarnLine('No html imports file exists at ' +
+        `\`${this.options.relativeHtmlImportsFile}\` (ember-polymer)`);
+      return tree;
+    }
+
+    // merge normal tree and our vulcanize tree
+    let vulcanize = new Vulcanize(this.options.htmlImportsDir,
+                                  this.options.vulcanizeOptions);
+    return new MergeTrees([ tree, vulcanize ], {
+      overwrite: true,
+      annotation: 'Merge (ember-polymer merge vulcanize with addon tree)'
+    });
+  },
+
+  postBuild() {
+    if (this.options.autoElementImport) {
+      quickTemp.remove(this, 'tmpImportsDir');
+    }
   }
 };
