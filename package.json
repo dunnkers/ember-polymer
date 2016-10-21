@@ -9,9 +9,9 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember try:each && npm run-script node-test",
+    "test": "ember try:each && npm run-script node-test && npm run-script coverage",
     "node-test": "mocha test/**/*.js",
-    "coveralls": "./upload-coverage.sh"
+    "coverage": "./upload-coverage.sh"
   },
   "repository": {
     "type": "git",
