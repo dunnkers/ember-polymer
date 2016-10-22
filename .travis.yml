@@ -35,6 +35,3 @@ install:
 
 script:
   - npm run-script run-travis
-
-after_success:
-  - npm run-script coverage
