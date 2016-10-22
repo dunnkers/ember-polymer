@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:each",
     "node-test": "mocha test/**/*.js",
-    "coverage": "./upload-coverage.sh"
+    "run-travis": "./run-travis.sh"
   },
   "repository": {
     "type": "git",
