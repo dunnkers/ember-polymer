@@ -13,4 +13,24 @@ describe('manual-importer', function() {
   it('loads it', function() {
     assert.ok(ManualImporter);
   });
+
+  it.skip('determines whether package already imported', function() {
+
+  });
+
+  it.skip('fixes manual import path', function() {
+
+  });
+
+  it.skip('fixes manual import when htmlImportsDir not at (../../)', function() {
+
+  });
+
+  it.skip('gets imports', function() {
+
+  });
+
+  it.skip('completely removes imports instead of replacing the line', function() {
+
+  });
 });
