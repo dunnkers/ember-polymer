@@ -10,7 +10,7 @@
     "build": "ember build",
     "start": "ember server",
     "test": "ember try:each",
-    "node-test": "mocha test/**/*.js",
+    "node-test": "mocha test/**/*-test.js",
     "run-travis": "./run-travis.sh"
   },
   "repository": {
@@ -27,7 +27,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "assert": "^1.4.1",
     "broccoli-asset-rev": "^2.4.2",
     "coveralls": "^2.11.14",
     "ember-ajax": "^2.5.2",
