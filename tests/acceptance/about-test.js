@@ -1,13 +1,13 @@
 import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | Polymer | index');
+moduleForAcceptance('Acceptance | about');
 
-test('renders custom elements', function(assert) {
-  visit('/');
+test('renders custom elements -> vulcanized.html is loaded correctly', function(assert) {
+  visit('/about');
 
   andThen(function() {
-    assert.equal(currentURL(), '/');
+    assert.equal(currentURL(), '/about');
   });
 
   andThen(function() {
