@@ -8,6 +8,7 @@ let Vulcanize = require('broccoli-vulcanize');
 let quickTemp = require('quick-temp');
 let AutoImporter = require('./lib/auto-importer');
 let Config = require('./lib/config');
+let ComponentInjector = require('./lib/component-injector');
 
 module.exports = {
   name: 'ember-polymer',
@@ -18,6 +19,10 @@ module.exports = {
     // config
     let app = appOrAddon.app || appOrAddon;
     this.options = new Config(app);
+
+    // component injection
+    let componentInjector = new ComponentInjector();
+    componentInjector.inject(app);
 
     // auto-import elements
     if (this.options.autoElementImport) {

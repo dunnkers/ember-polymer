@@ -3,7 +3,7 @@ import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | about');
 
-test('renders custom elements -> vulcanized.html is loaded correctly', function(assert) {
+test('renders custom elements -> vulcanized.html is loaded', function(assert) {
   visit('/about');
 
   andThen(function() {
