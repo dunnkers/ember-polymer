@@ -3,45 +3,47 @@
 
 Be cool and use [Polymer](https://www.polymer-project.org/1.0/) and Ember together! This addon integrates Polymer with Ember, so you can use the power of custom web components in your ember apps today.
 
-## Requirements
-
-This addon forces Polymer to use Shadow DOM. Browsers that do not natively support Shadow DOM will be supplied with the [polyfill](https://github.com/webcomponents/webcomponentsjs). Note that using a polyfilled Shadow DOM results in slightly slower rendering.
-
 ## Installation
 
-`ember install ember-polymer`
+```shell
+ember install ember-polymer
+```
 
 ## Usage
 
 To use a custom element, just install it through bower.
 
-`bower install PolymerElements/paper-button --save`
+```shell
+bower install PolymerElements/paper-button --save
+```
 
-Done! ember-polymer detects that this is a custom element, and imports it automatically! ✨ You can now use the element:
+Done! ember-polymer identifies this package as a custom element and imports it automatically! ✨ You can now use the element:
 
 ```html
 <paper-button raised>Raised button</paper-button>
 ```
 
-#### Manual import
+## Demo
 
-If your element is not automatically imported, its folder structure does not follow the polymer [guidelines](https://www.polymer-project.org/1.0/docs/tools/documentation#add-a-documentation-page-for-an-element-repo). To manually import this element, add a file `elements.html` in `/app`, and import the custom element:
+[https://dunnkers.github.io/ember-polymer/](https://dunnkers.github.io/ember-polymer/)
+
+## Requirements
+
+This addon forces Polymer to use Shadow DOM. Browsers that do not natively support Shadow DOM will be supplied with the [polyfill](https://github.com/webcomponents/webcomponentsjs). Note that this polyfill might result in slightly slower rendering.
+
+## Configuration
+
+### Manual imports
+
+If an element is not automatically imported, it probably does not follow the polymer [naming conventions](https://www.polymer-project.org/1.0/docs/tools/polymer-cli#element-project-layout). To import it, create `elements.html` in `/app` and import the element:
 
 ```html
 <link rel="import" href="../bower_components/some-element/some-element.html">
 ```
 
-Automatic imports and manual imports will then be merged.
+### Config variables
 
-To disable automatic element importing all together, set the `autoElementImport` config variable to `false`.
-
-## Demo
-
-[https://dunnkers.github.io/ember-polymer/](https://dunnkers.github.io/ember-polymer/)
-
-## Configuration
-
-The addon can be configured in the `config/environment.js` file as such:
+The addon can be configured in `config/environment.js` as such:
 
 ```js
 ENV['ember-polymer'] = {
@@ -49,51 +51,57 @@ ENV['ember-polymer'] = {
 }
 ```
 
-**autoElementImport**
+#### autoElementImport
 
-This indicates whether elements should be imported automatically. ember-polymer finds elements  by looking through bower and npm packages, and then checks whether the package has the `web-components` keyword and a valid html import entry point. See the [guidelines](https://www.polymer-project.org/1.0/docs/tools/documentation#add-a-documentation-page-for-an-element-repo). Defaults to `true`.
+Indicates whether elements should be imported automatically. ember-polymer automatically imports elements from bower and npm packages which have the `web-components` keyword and a valid [html import entry point](https://www.polymer-project.org/1.0/docs/tools/polymer-cli#element-project-layout). All elements at [customelements.io](https://customelements.io/) should be compatible.
+
+Disable if you want full control over imports yourself. Defaults to `true`.
 
 ```js
   autoElementImport: true
 ```
 
-**excludeElements**
+#### excludeElements
 
-A list with names of bower- or npm packages to exclude during auto element import. Defaults to `[]`.
+A list with names of bower- or npm packages to exclude during auto element import. Comes in handy when you only want to manually import one specific file from a package, but not the entire element.
+
+Defaults to `[]`.
 
 ```js
   excludeElements: ['paper-styles']
 ```
 
-**htmlImportsFile**
+#### htmlImportsFile
 
-File to put html imports in. File is not necessary if using `autoElementImport` and no additional elements are needed to import. If defined anyway, imports in the file will be merged with the auto imported ones.
+File to put html imports in. If you do not have manual imports and are using `autoElementImport`, the file is not necessary.
 
-If not using `autoElementImport`, the file must exist. Defaults to `app/elements.html`.
+Defaults to `app/elements.html`.
 
 ```js
   htmlImportsFile: 'app/elements.html'
 ```
 
-**vulcanizeOutput**
+#### vulcanizeOptions
 
-The output file produced by [vulcanize](https://github.com/Polymer/vulcanize) for all vulcanized html code and styling. Defaults to `assets/vulcanized.html`.
+Allows you to set [options](https://github.com/Polymer/vulcanize#using-vulcanize-programmatically) used in [vulcanize](https://github.com/Polymer/vulcanize).
 
-```js
-  vulcanizeOutput: 'assets/vulcanized.html'
-```
-
-**vulcanizeOptions**
-
-Allows you to set
-[options](https://github.com/Polymer/vulcanize#using-vulcanize-programmatically)
-used in vulcanize. Defaults to:
+Defaults to:
 
 ```js
   vulcanizeOptions: {
     inlineCss: true,
     inlineScripts: true
   }
+```
+
+#### vulcanizeOutput
+
+The output file produced by [vulcanize](https://github.com/Polymer/vulcanize) for all vulcanized html code and styling.
+
+Defaults to `assets/vulcanized.html`.
+
+```js
+  vulcanizeOutput: 'assets/vulcanized.html'
 ```
 
 ## About
