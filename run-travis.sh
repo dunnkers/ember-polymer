@@ -5,5 +5,6 @@ if [ $COVERAGE ]; then
   ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info
   rm -rf ./coverage
 else
+  npm run-script node-test
   ember try:one $EMBER_TRY_SCENARIO test --skip-cleanup
 fi
