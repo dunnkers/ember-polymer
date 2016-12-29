@@ -1,6 +1,6 @@
 {
   "name": "ember-polymer",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Allows you to use Polymer in your Ember application.",
   "directories": {
     "doc": "doc",
