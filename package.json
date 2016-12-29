@@ -67,7 +67,7 @@
     "broccoli-vulcanize": "^3.0.0",
     "clone": "^2.0.0",
     "ember-cli-babel": "^5.1.6",
-    "ember-cli-htmlbars": "^1.1.0",
+    "ember-cli-htmlbars": "^1.1.1",
     "quick-temp": "^0.1.6"
   },
   "ember-addon": {
