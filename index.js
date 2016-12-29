@@ -6,7 +6,7 @@ let writeFile = fs.writeFileSync;
 let MergeTrees = require('broccoli-merge-trees');
 let Vulcanize = require('broccoli-vulcanize');
 let quickTemp = require('quick-temp');
-let AutoImporter = require('./lib/auto-importer');
+let Importer = require('./lib/importer');
 let Config = require('./lib/config');
 
 module.exports = {
@@ -22,13 +22,13 @@ module.exports = {
     // auto-import elements
     if (this.options.autoElementImport) {
       // import elements
-      let importer = new AutoImporter(this.project, this.options, this.ui);
-      let autoImported = importer.importElements();
+      let importer = new Importer(this.project, this.options, this.ui);
+      let imported = importer.importElements();
 
       // create a temporary directory to store html imports in.
       quickTemp.makeOrRemake(this, 'tmpImportsDir', this.name);
       this.options.htmlImportsDir = this.tmpImportsDir;
-      writeFile(this.options.htmlImportsFile, autoImported);
+      writeFile(this.options.htmlImportsFile, imported);
     }
 
     // import webcomponentsjs polyfill library

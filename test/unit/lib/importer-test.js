@@ -9,11 +9,11 @@ let app = require('../../fixtures/app-fixture');
 let project = require('../../fixtures/project-fixture');
 let ui = require('../../fixtures/ui-fixture.js');
 
-describe('auto-importer', function() {
-  let AutoImporter;
+describe('importer', function() {
+  let Importer;
 
   before(function() {
-    AutoImporter = require('../../../lib/auto-importer');
+    Importer = require('../../../lib/importer');
     app.project.root = process.cwd();
     this.options = new Config(app);
 
@@ -23,25 +23,25 @@ describe('auto-importer', function() {
   });
 
   it('loads it', function() {
-    this.autoImporter = new AutoImporter(project, this.options, ui);
-    assert.ok(this.autoImporter);
+    this.importer = new Importer(project, this.options, ui);
+    assert.ok(this.importer);
   });
 
   it('auto generates a html imports file', function() {
-    let elements = this.autoImporter.importElements();
+    let elements = this.importer.importElements();
     assert.equal(elements, this.elements);
   });
 
   it('merges manual imports with auto-imported ones', function() {
     this.options.htmlImportsFile = 'test/fixtures/elements-fixture.html';
-    let elements = this.autoImporter.importElements();
+    let elements = this.importer.importElements();
     assert.equal(elements, `${this.elements}
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">`);
   });
 
   it('does not import manual imports when already auto-imported', function() {
     this.options.htmlImportsFile = 'test/fixtures/elements-redundant-fixture.html';
-    let elements = this.autoImporter.importElements();
+    let elements = this.importer.importElements();
     assert.equal(elements, this.elements);
   });
 
