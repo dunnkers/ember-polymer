@@ -49,24 +49,6 @@ describe('package', function() {
       `<link rel="import" href="${this.package.linkPath}">`);
   });
 
-  it('checks whether web-components keyword is apparent', function() {
-    this.package.pkgFile = 'non-existant.json';
-    assert.equal(this.package.hasWebComponentsKeyword(), false);
-
-    this.package.pkgFile = 'bower.json';
-    assert.equal(this.package.hasWebComponentsKeyword(), true);
-
-    let pkg = new Package('bower_components', 'ember', 'bower.json');
-    assert.equal(pkg.hasWebComponentsKeyword(), false);
-  });
-
-  it('checks whether it is a web component', function() {
-    assert.equal(this.package.isWebComponent(), true);
-
-    let pkg = new Package('bower_components', 'ember', 'bower.json');
-    assert.equal(pkg.isWebComponent(), false);
-  });
-
   it.skip('should be able to take a complete path as input', function() {
 
   });
