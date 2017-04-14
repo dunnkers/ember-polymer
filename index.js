@@ -1,4 +1,4 @@
-/* jshint node: true */
+/* eslint-env node */
 'use strict';
 let fs = require('fs');
 let fileExists = fs.existsSync;
@@ -32,7 +32,7 @@ module.exports = {
     }
 
     // import webcomponentsjs polyfill library
-    app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents.min.js`);
+    app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents-lite.js`);
   },
 
   // insert polymer and vulcanized elements
