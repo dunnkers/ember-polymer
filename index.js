@@ -36,13 +36,15 @@ module.exports = {
   },
 
   // insert polymer and vulcanized elements
-  contentFor(type) {
+  contentFor(type, config) {
     if (type === 'head') {
+      let href = config.rootURL + this.options.vulcanizeOutput;
+
       return `<script>
                 window.Polymer = window.Polymer || {};
                 window.Polymer.dom = "shadow";
               </script>
-              <link rel="import" href="${this.options.vulcanizeOutput}">`;
+              <link rel="import" href="${href}">`;
     }
   },
 

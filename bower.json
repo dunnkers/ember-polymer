@@ -1,7 +1,7 @@
 {
   "name": "ember-polymer",
   "dependencies": {
-    "polymer": "Polymer/polymer#~1.8.1",
+    "polymer": "Polymer/polymer#~1.9.1",
     "paper-elements": "PolymerElements/paper-elements#^1.0.7",
     "iron-icons": "PolymerElements/iron-icons#^1.2.0",
     "webcomponentsjs": "0.7.24"
