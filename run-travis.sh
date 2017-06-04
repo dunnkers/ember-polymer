@@ -6,5 +6,7 @@ if [ $COVERAGE ]; then
   rm -rf ./coverage
 else
   npm run-script node-test
-  ember try:one $EMBER_TRY_SCENARIO test --skip-cleanup
+  # Usually, it's ok to finish the test scenario without reverting
+  #  to the addon's original dependency state, skipping "cleanup".
+  node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO test --skip-cleanup
 fi
