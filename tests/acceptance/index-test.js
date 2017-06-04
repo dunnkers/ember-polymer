@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 
@@ -5,6 +6,7 @@ moduleForAcceptance('Acceptance | Polymer | index');
 
 test('renders custom elements', function(assert) {
   visit('/');
+  assert.expect(3);
 
   andThen(function() {
     assert.equal(currentURL(), '/');
@@ -14,9 +16,12 @@ test('renders custom elements', function(assert) {
     let done = assert.async();
 
     let testElement = () => {
-      assert.ok(document.querySelector('paper-button').shadowRoot,
+      let button = document.querySelector('paper-button');
+
+      assert.ok(button.shadowRoot || button.shadyRoot,
         'paper-button has shadowRoot');
-      assert.equal($('paper-button').attr('role'), 'button',
+
+      assert.equal(Ember.$('paper-button').attr('role'), 'button',
         'paper-button rendered successfully');
 
       done();

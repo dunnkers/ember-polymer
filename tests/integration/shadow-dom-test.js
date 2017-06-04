@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
@@ -16,6 +17,6 @@ test('Uses native Shadow DOM if available', function(assert) {
 
   assert.ok(document.querySelector('paper-button').shadowRoot,
     'paper-button has shadowRoot');
-  assert.equal($('paper-button').attr('role'), 'button',
+  assert.equal(Ember.$('paper-button').attr('role'), 'button',
     'role is attached to button immediately');
 });
