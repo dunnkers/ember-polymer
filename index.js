@@ -32,7 +32,7 @@ module.exports = {
     }
 
     // import webcomponentsjs polyfill library
-    app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents-lite.js`);
+    app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents.js`);
   },
 
   // insert polymer and vulcanized elements
