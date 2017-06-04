@@ -1,4 +1,4 @@
-/* jshint node: true */
+/* eslint-env node */
 'use strict';
 let fs = require('fs');
 let fileExists = fs.existsSync;
@@ -32,17 +32,19 @@ module.exports = {
     }
 
     // import webcomponentsjs polyfill library
-    app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents.min.js`);
+    app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents.js`);
   },
 
   // insert polymer and vulcanized elements
-  contentFor(type) {
+  contentFor(type, config) {
     if (type === 'head') {
+      let href = config.rootURL + this.options.vulcanizeOutput;
+
       return `<script>
                 window.Polymer = window.Polymer || {};
                 window.Polymer.dom = "shadow";
               </script>
-              <link rel="import" href="${this.options.vulcanizeOutput}">`;
+              <link rel="import" href="${href}">`;
     }
   },
 
