@@ -9,9 +9,7 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember try:each",
-    "node-test": "mocha test/**/*-test.js",
-    "run-travis": "./run-travis.sh"
+    "test": "ember try:each"
   },
   "repository": {
     "type": "git",

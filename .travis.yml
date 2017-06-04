@@ -36,7 +36,16 @@ install:
 before_script: greenkeeper-lockfile-update
 
 script:
-  - npm run-script run-travis
+  # Usually, it's ok to finish the test scenario without reverting
+  #  to the addon's original dependency state, skipping "cleanup".
+  - node_modules/mocha/bin/_mocha test/**/*-test.js
+  - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO test --skip-cleanup
 
-after_script:
+after_script: # Upload lockfile
   - greenkeeper-lockfile-upload
+
+after_success: # Upload coverage
+  - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec test/**/*-test.js
+  - ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info
+  - ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info
+  - rm -rf ./coverage
