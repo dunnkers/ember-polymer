@@ -8,6 +8,8 @@ let Vulcanize = require('broccoli-vulcanize');
 let quickTemp = require('quick-temp');
 let Importer = require('./lib/importer');
 let Config = require('./lib/config');
+let FastbootTransform = require('fastboot-transform');
+let Funnel = require('broccoli-funnel');
 
 module.exports = {
   name: 'ember-polymer',
@@ -67,5 +69,11 @@ module.exports = {
       overwrite: true,
       annotation: 'Merge (ember-polymer merge vulcanize with addon tree)'
     });
+  },
+
+  treeForVendor(tree) {
+    let browserLib = new Funnel(tree); // `...` in documentation
+
+    return new MergeTrees([tree, FastbootTransform(browserLib)]);
   }
 };
