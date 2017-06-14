@@ -27,6 +27,14 @@ Done! ember-polymer identifies this package as a custom element and imports it a
 
 [https://dunnkers.github.io/ember-polymer/](https://dunnkers.github.io/ember-polymer/)
 
+## Data binding
+
+Polymer's elements should just work with one-way bindings:
+```html
+<paper-button raised={{raised}}>Raised button</paper-button>
+```
+However, for two-way bindings we will need to encapsulate the elements in an Ember Component. Exactly this is what the [ember-polymer-paper](https://github.com/dunnkers/ember-polymer-paper) addon is for!
+
 ## Requirements
 
 This addon forces Polymer to use Shadow DOM. Browsers that do not natively support Shadow DOM will be supplied with the [polyfill](https://github.com/webcomponents/webcomponentsjs). Note that this polyfill might result in slightly slower rendering.
