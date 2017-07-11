@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+          "type": "chrome",
+          "request": "launch",
+          "name": "Chrome Ember debugging",
+          "url": "http://localhost:4200/"
+        }
+    ]
+}
