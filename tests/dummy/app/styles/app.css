@@ -19,3 +19,7 @@ paper-card {
   margin: 20px 0;
   width: 350px;
 }
+
+vaadin-date-picker, paper-input {
+  width: 300px;
+}

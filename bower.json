@@ -4,6 +4,7 @@
     "polymer": "Polymer/polymer#1.9.1",
     "paper-elements": "PolymerElements/paper-elements#1.0.7",
     "iron-icons": "PolymerElements/iron-icons#1.2.1",
-    "webcomponentsjs": "0.7.24"
+    "webcomponentsjs": "0.7.24",
+    "vaadin-date-picker": "^1.2.3"
   }
 }
