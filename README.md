@@ -3,6 +3,12 @@
 
 Be cool and use [Polymer](https://www.polymer-project.org/1.0/) and Ember together! This addon integrates Polymer with Ember, so you can use the power of custom web components in your ember apps today.
 
+## Why
+
+Why use Polymer? You might ask. By using Polymer you actually choose to embrace the native Web Components specification, not necessarily Polymer itself. Polymer is only just a thin layer over the [Custom Elements v1 specification](https://developers.google.com/web/fundamentals/getting-started/primers/customelements), providing some syntactic sugar as well as [compatibility](https://www.polymer-project.org/2.0/docs/browsers). Every framework will eventually end up implementing this specification somehow, simply because using native is faster.
+
+Polymer enables you to use any element on [webcomponents.org](https://www.webcomponents.org), opening up the world to lots of other good quality components besides the ones on emberaddons.com.
+
 ## Installation
 
 ```shell
