@@ -37,7 +37,7 @@
     "ember-cli-deploy-build": "^1.1.0",
     "ember-cli-deploy-git": "^1.1.1",
     "ember-cli-eslint": "^4.0.0",
-    "ember-cli-htmlbars-inline-precompile": "^0.4.3",
+    "ember-cli-htmlbars-inline-precompile": "^1.0.0",
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-qunit": "^4.0.0",
     "ember-cli-release": "^0.2.9",
