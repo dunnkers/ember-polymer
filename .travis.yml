@@ -4,6 +4,10 @@ node_js:
   - "6"
 
 sudo: false
+dist: trusty
+
+addons:
+  chrome: stable
 
 cache:
   directories:
@@ -28,7 +32,7 @@ before_install:
   - phantomjs --version
 
 install:
-  - yarn install --no-lockfile
+  - yarn install --no-lockfile --non-interactive
   - bower install
 
 before_script: greenkeeper-lockfile-update
@@ -37,7 +41,7 @@ script:
   # Usually, it's ok to finish the test scenario without reverting
   #  to the addon's original dependency state, skipping "cleanup".
   - node_modules/mocha/bin/_mocha test/**/*-test.js
-  - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO test --skip-cleanup
+  - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip-cleanup
 
 after_script: # Upload lockfile
   - greenkeeper-lockfile-upload
