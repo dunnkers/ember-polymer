@@ -68,7 +68,7 @@
     "broccoli-merge-trees": "^2.0.0",
     "broccoli-vulcanize": "^4.0.0",
     "clone": "^2.0.0",
-    "ember-cli-babel": "^6.4.1",
+    "ember-cli-babel": "^6.8.2",
     "ember-cli-htmlbars": "^2.0.1",
     "quick-temp": "^0.1.6"
   },
