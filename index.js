@@ -8,6 +8,7 @@ let Vulcanize = require('broccoli-vulcanize');
 let quickTemp = require('quick-temp');
 let Importer = require('./lib/importer');
 let Config = require('./lib/config');
+let Bundler = require('./bundler');
 
 module.exports = {
   name: 'ember-polymer',
@@ -32,7 +33,7 @@ module.exports = {
     }
 
     // import webcomponentsjs polyfill library
-    app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents.js`);
+    app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents-lite.js`);
   },
 
   // insert polymer and vulcanized elements
@@ -60,10 +61,13 @@ module.exports = {
       return tree;
     }
 
+    let bundler = new Bundler(this.options.htmlImportsDir,
+                              this.options.vulcanizeOptions);
+
     // merge normal tree and our vulcanize tree
-    let vulcanize = new Vulcanize(this.options.htmlImportsDir,
-                                  this.options.vulcanizeOptions);
-    return new MergeTrees([ tree, vulcanize ], {
+    // let vulcanize = new Vulcanize(this.options.htmlImportsDir,
+    //                               this.options.vulcanizeOptions);
+    return new MergeTrees([ tree, bundler ], {
       overwrite: true,
       annotation: 'Merge (ember-polymer merge vulcanize with addon tree)'
     });
