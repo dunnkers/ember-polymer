@@ -14,7 +14,7 @@ cache:
     - $HOME/.cache # includes bowers cache
   yarn: true
 
- env:
+env:
   global:
     - JOBS=1
   matrix:
