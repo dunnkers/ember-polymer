@@ -2,9 +2,7 @@
   "name": "ember-polymer",
   "dependencies": {
     "paper-button": "PolymerElements/paper-button#^2.0.0",
-    "iron-icons": "PolymerElements/iron-icons#^2.0.1",
     "polymer": "^2.1.0",
-    "webcomponentsjs": "^1.0.13",
-    "vaadin-date-picker": "^2.0.5"
+    "webcomponentsjs": "^1.0.13"
   }
 }

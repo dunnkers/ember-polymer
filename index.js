@@ -4,11 +4,10 @@ let fs = require('fs');
 let fileExists = fs.existsSync;
 let writeFile = fs.writeFileSync;
 let MergeTrees = require('broccoli-merge-trees');
-let Vulcanize = require('broccoli-vulcanize');
 let quickTemp = require('quick-temp');
 let Importer = require('./lib/importer');
 let Config = require('./lib/config');
-let Bundler = require('./bundler');
+let ElementBundler = require('./bundler');
 
 module.exports = {
   name: 'ember-polymer',
@@ -61,7 +60,7 @@ module.exports = {
       return tree;
     }
 
-    let bundler = new Bundler(this.options.htmlImportsDir,
+    let bundler = new ElementBundler(this.options.htmlImportsDir,
                               this.options.vulcanizeOptions);
 
     // merge normal tree and our vulcanize tree
@@ -69,7 +68,7 @@ module.exports = {
     //                               this.options.vulcanizeOptions);
     return new MergeTrees([ tree, bundler ], {
       overwrite: true,
-      annotation: 'Merge (ember-polymer merge vulcanize with addon tree)'
+      annotation: 'Merge (ember-polymer merge bundler with addon tree)'
     });
   }
 };
