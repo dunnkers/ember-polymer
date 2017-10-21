@@ -3,6 +3,25 @@
   "dependencies": {
     "paper-button": "PolymerElements/paper-button#^2.0.0",
     "polymer": "^2.1.0",
-    "webcomponentsjs": "^1.0.13"
+    "webcomponentsjs": "^1.0.13",
+    "paper-styles": "PolymerElements/paper-styles#^2.0.0",
+    "vaadin-date-picker": "^2.0.6"
+  },
+  "resolutions": {
+    "webcomponentsjs": "^1.0.13",
+    "polymer": "^2.1.0",
+    "paper-drawer-panel": "^2.0.0",
+    "paper-listbox": "^2.0.0",
+    "paper-styles": "^2.0.0",
+    "paper-header-panel": "^2.0.0",
+    "paper-icon-button": "^2.0.1",
+    "paper-toolbar": "^2.0.0",
+    "iron-a11y-announcer": "^2.0.0",
+    "iron-dropdown": "^2.0.0",
+    "vaadin-date-picker": "^2.0.6",
+    "iron-overlay-behavior": "^2.0.0",
+    "iron-media-query": "^2.0.0",
+    "iron-a11y-keys-behavior": "^2.0.0",
+    "iron-resizable-behavior": "^2.0.0"
   }
 }
