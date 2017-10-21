@@ -9,6 +9,7 @@ const clone = require('clone');
 const fs = require('fs');
 
 const { Bundler  } = require('polymer-bundler');
+const { Analyzer, FSUrlLoader } = require('polymer-analyzer');
 const parse5 = require('parse5');
 
 module.exports = ElementBundler;
@@ -29,24 +30,40 @@ function ElementBundler(inputTree, options) {
 }
 
 ElementBundler.prototype.bundle = function (options) {
-  return new RSVP.Promise(function (resolve, reject) {
-    mkdirp(path.dirname(options.output), function (error) {
+  return new RSVP.Promise((resolve, reject) => {
+    mkdirp(path.dirname(options.output), (error) => {
       if (error) {
         reject(error);
       }
 
+      // Some debugging lines.
       // console.log(options);
+      // // console.log('from:', options.input);
+      // console.log('process.cwd:', process.cwd());
+      // console.log('inputTree = ', this.inputTree);
       // console.log('relative:');
-      // console.log('from:', options.input);
-      // console.log('to:', process.cwd());
       // console.log(path.relative(process.cwd(), options.input));
+      // // let inputPath = path.join('.', path.relative(process.cwd(), options.input));
 
-      let inputPath = path.join('.', path.relative(process.cwd(), options.input));
+      // console.log('trying to read file!');
+      // fs.readFile(options.input, 'utf8', (err, data) => {
+      //   if (err) throw err;
 
-      const bundler = new Bundler(options);
-      bundler.generateManifest([ options.input ]).then((manifest) => {
+      //   console.log('data=', data);
+      // });
+
+      // FIXME do not use process.cwd to get relative project location, but an options parameter instead.
+      let relative = path.relative(process.cwd(), options.input);
+      const analyzer = new Analyzer({
+        urlLoader: new FSUrlLoader(path.resolve(process.cwd()))
+      });
+
+      const bundler = new Bundler({
+        analyzer
+      });
+      bundler.generateManifest([ relative ]).then((manifest) => {
         bundler.bundle(manifest).then((result) => {
-          let html = parse5.serialize(result.documents.get(path.basename(options.input)).ast);
+          let html = parse5.serialize(result.documents.get(relative).ast);
 
           fs.writeFileSync(options.output, html);
           resolve();
