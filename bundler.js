@@ -36,23 +36,8 @@ ElementBundler.prototype.bundle = function (options) {
         reject(error);
       }
 
-      // Some debugging lines.
-      // console.log(options);
-      // // console.log('from:', options.input);
-      // console.log('process.cwd:', process.cwd());
-      // console.log('inputTree = ', this.inputTree);
-      // console.log('relative:');
-      // console.log(path.relative(process.cwd(), options.input));
-      // // let inputPath = path.join('.', path.relative(process.cwd(), options.input));
-
-      // console.log('trying to read file!');
-      // fs.readFile(options.input, 'utf8', (err, data) => {
-      //   if (err) throw err;
-
-      //   console.log('data=', data);
-      // });
-
-      // FIXME do not use process.cwd to get relative project location, but an options parameter instead.
+      // FIXME do not use process.cwd to get relative project location,
+      // but an options parameter instead.
       let relative = path.relative(process.cwd(), options.input);
       const analyzer = new Analyzer({
         urlLoader: new FSUrlLoader(path.resolve(process.cwd()))
