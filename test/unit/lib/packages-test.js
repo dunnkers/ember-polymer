@@ -12,8 +12,8 @@ describe('packages', function() {
     Packages = require('../../../lib/packages');
 
     this.webComponentPackages = [
-      new Package('bower_components', 'paper-elements', 'bower.json'),
-      new Package('bower_components', 'iron-icons', 'bower.json')
+      new Package(project.bowerDirectory, 'paper-elements', 'bower.json'),
+      new Package(project.bowerDirectory, 'iron-icons', 'bower.json')
     ];
   });
 
@@ -23,7 +23,8 @@ describe('packages', function() {
   });
 
   it('should be able to detect web-component packages', function() {
-    let pkg = new Package('bower_components', 'ember', 'bower.json');
+    let pkg = new Package(project.bowerDirectory, 'moment', 'bower.json');
+    // FIXME check for pkg existance first (!)
     assert.equal(this.packages.isWebComponent(pkg), false);
 
     pkg.name = 'paper-elements';
@@ -35,7 +36,7 @@ describe('packages', function() {
 
   it('returns only bower packages that are a web-component', function() {
     let packages = this.packages.getWebComponentPackages(
-      project.bowerDependencies(), 'bower_components', 'bower.json');
+      project.bowerDependencies(), project.bowerDirectory, 'bower.json');
     assert.deepEqual(packages, this.webComponentPackages);
   });
 

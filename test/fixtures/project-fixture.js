@@ -2,8 +2,8 @@
 'use strict';
 
 module.exports = {
-  bowerDirectory: 'bower_components',
-  nodeModulesPath: 'node_modules',
+  bowerDirectory: 'test/fixtures/bower_components_fixture',
+  nodeModulesPath: 'test/fixtures/node_modules',
 
   bowerDependencies() {
     return {

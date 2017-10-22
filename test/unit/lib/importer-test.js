@@ -17,9 +17,10 @@ describe('importer', function() {
     app.project.root = process.cwd();
     this.options = new Config(app);
 
+    this.bowerDir = '../../test/fixtures/bower_components_fixture';
     this.elements =
-`<link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
-<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">`;
+`<link rel="import" href="${this.bowerDir}/paper-elements/paper-elements.html">
+<link rel="import" href="${this.bowerDir}/iron-icons/iron-icons.html">`;
   });
 
   it('loads it', function() {
@@ -36,7 +37,7 @@ describe('importer', function() {
     this.options.htmlImportsFile = 'test/fixtures/elements-fixture.html';
     let elements = this.importer.importElements();
     assert.equal(elements, `${this.elements}
-<link rel="import" href="../../bower_components/paper-button/paper-button.html">`);
+<link rel="import" href="${this.bowerDir}/paper-button/irregular-element-name.html">`);
   });
 
   it('does not import manual imports when already auto-imported', function() {
