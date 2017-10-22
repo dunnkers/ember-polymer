@@ -16,7 +16,7 @@ module.exports = ElementBundler;
 ElementBundler.prototype = Object.create(Plugin.prototype);
 ElementBundler.prototype.constructor = ElementBundler;
 
-function ElementBundler(inputTree, options) {
+function ElementBundler(inputTree, projectRoot, options) {
   if (!(this instanceof ElementBundler)) {
     return new ElementBundler(inputTree, options);
   }
@@ -24,9 +24,9 @@ function ElementBundler(inputTree, options) {
   // Clone the options otherwise any alterations after this writer is called
   // will be picked up.
   this.options = clone(options) || {};
-  this.inputTree = inputTree;
+  this.projectRoot = projectRoot;
   this.outputFilepath = options.output || path.basename(options.input);
-  Plugin.call(this, [inputTree]);
+  Plugin.call(this, [ inputTree ]);
 }
 
 ElementBundler.prototype.bundle = function (options) {
@@ -36,16 +36,15 @@ ElementBundler.prototype.bundle = function (options) {
         reject(error);
       }
 
-      // FIXME do not use process.cwd to get relative project location,
-      // but an options parameter instead.
-      let relative = path.relative(process.cwd(), options.input);
+      let relative = path.relative(this.projectRoot, options.input);
       const analyzer = new Analyzer({
-        urlLoader: new FSUrlLoader(path.resolve(process.cwd()))
+        urlLoader: new FSUrlLoader(path.resolve(this.projectRoot))
       });
 
       const bundler = new Bundler({
         analyzer
       });
+
       bundler.generateManifest([ relative ]).then((manifest) => {
         bundler.bundle(manifest).then((result) => {
           let html = parse5.serialize(result.documents.get(relative).ast);

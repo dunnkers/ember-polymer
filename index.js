@@ -60,12 +60,11 @@ module.exports = {
       return tree;
     }
 
+    // merge normal tree and our bundler tree
     let bundler = new ElementBundler(this.options.htmlImportsDir,
-                              this.options.vulcanizeOptions);
+                                     this.options.projectRoot,
+                                     this.options.vulcanizeOptions);
 
-    // merge normal tree and our vulcanize tree
-    // let vulcanize = new Vulcanize(this.options.htmlImportsDir,
-    //                               this.options.vulcanizeOptions);
     return new MergeTrees([ tree, bundler ], {
       overwrite: true,
       annotation: 'Merge (ember-polymer merge bundler with addon tree)'
