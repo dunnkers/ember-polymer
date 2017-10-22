@@ -2,8 +2,8 @@
   "name": "ember-polymer",
   "dependencies": {
     "paper-button": "PolymerElements/paper-button#^2.0.0",
-    "polymer": "^2.1.0",
-    "webcomponentsjs": "^1.0.13",
+    "polymer": "^2.2.0",
+    "webcomponentsjs": "^1.0.17",
     "paper-styles": "PolymerElements/paper-styles#^2.0.0",
     "vaadin-date-picker": "^2.0.6",
     "paper-drawer-panel": "PolymerElements/paper-drawer-panel#^2.0.0",
