@@ -7,7 +7,7 @@ let MergeTrees = require('broccoli-merge-trees');
 let quickTemp = require('quick-temp');
 let Importer = require('./lib/importer');
 let Config = require('./lib/config');
-let ElementBundler = require('./bundler');
+let ElementBundler = require('./lib/bundler');
 
 module.exports = {
   name: 'ember-polymer',
