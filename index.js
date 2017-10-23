@@ -2,11 +2,10 @@
 'use strict';
 let fs = require('fs');
 let fileExists = fs.existsSync;
-let writeFile = fs.writeFileSync;
 let MergeTrees = require('broccoli-merge-trees');
-let quickTemp = require('quick-temp');
-let Importer = require('./lib/importer');
 let Config = require('./lib/config');
+let Importer = require('./lib/importer');
+let ElementWriter = require('./lib/writer');
 let ElementBundler = require('./lib/bundler');
 
 module.exports = {
@@ -18,18 +17,6 @@ module.exports = {
     // config
     let app = appOrAddon.app || appOrAddon;
     this.options = new Config(app);
-
-    // auto-import elements
-    if (this.options.autoElementImport) {
-      // import elements
-      let importer = new Importer(this.project, this.options, this.ui);
-      let imported = importer.importElements();
-
-      // create a temporary directory to store html imports in.
-      quickTemp.makeOrRemake(this, 'tmpImportsDir', this.name);
-      this.options.htmlImportsDir = this.tmpImportsDir;
-      writeFile(this.options.htmlImportsFile, imported);
-    }
 
     // import webcomponentsjs polyfill library
     app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents-lite.js`);
@@ -57,9 +44,11 @@ module.exports = {
     }
 
     // merge normal tree and our bundler tree
-    let bundler = new ElementBundler(this.options.htmlImportsDir,
-                                     this.options.projectRoot,
-                                     this.options.vulcanizeOptions);
+    let importer = new Importer(this.project, this.options, this.ui);
+    let writer = new ElementWriter(this.options.projectRoot, // could be anything
+                                   this.options,
+                                   importer);
+    let bundler = new ElementBundler(writer, this.options);
 
     return new MergeTrees([ tree, bundler ], {
       overwrite: true,
