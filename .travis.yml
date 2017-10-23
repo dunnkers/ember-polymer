@@ -30,9 +30,8 @@ matrix:
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
-  - yarn global add bower phantomjs-prebuilt greenkeeper-lockfile@1
+  - yarn global add bower greenkeeper-lockfile@1
   - bower --version
-  - phantomjs --version
 
 install:
   - yarn install --no-lockfile --non-interactive
