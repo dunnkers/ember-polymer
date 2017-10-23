@@ -40,11 +40,7 @@ module.exports = {
     if (type === 'head') {
       let href = config.rootURL + this.options.vulcanizeOutput;
 
-      return `<script>
-                window.Polymer = window.Polymer || {};
-                window.Polymer.dom = "shadow";
-              </script>
-              <link rel="import" href="${href}">`;
+      return `<link rel="import" href="${href}">`;
     }
   },
 
