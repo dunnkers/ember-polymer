@@ -27,8 +27,7 @@ test('renders custom elements -> vulcanized.html is loaded correctly', function(
       done();
     };
 
-    if (window.Polymer.Settings.nativeShadow ||
-        window.Polymer.RenderStatus.hasRendered()) {
+    if (window.Polymer.Settings.nativeShadow || window.WebComponents.ready) {
       testElement();
     } else {
       // wait for elements to be polyfilled
