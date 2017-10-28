@@ -1,11 +1,10 @@
 /* eslint-env node */
 'use strict';
-let fs = require('fs');
-let fileExists = fs.existsSync;
+let path = require('path');
 let MergeTrees = require('broccoli-merge-trees');
+let fileWriter = require('broccoli-file-creator');
 let Config = require('./lib/config');
 let Importer = require('./lib/importer');
-let ElementWriter = require('./lib/writer');
 let ElementBundler = require('./lib/bundler');
 
 module.exports = {
@@ -36,19 +35,14 @@ module.exports = {
       return tree;
     }
 
-    // a html imports file must exist
-    if (!fileExists(this.options.htmlImportsFile)) {
-      this.ui.writeWarnLine('No html imports file exists at ' +
-        `\`${this.options.relativeHtmlImportsFile}\` (ember-polymer)`);
-      return tree;
-    }
+    // import elements
+    let importer = new Importer(this.project, this.options, this.ui);
+    let contents = importer.importElements();
+    let filepath = path.basename(this.options.htmlImportsFile);
+    let entryNode = fileWriter(filepath, contents);
 
     // merge normal tree and our bundler tree
-    let importer = new Importer(this.project, this.options, this.ui);
-    let writer = new ElementWriter(this.options.projectRoot, // could be anything
-                                   this.options,
-                                   importer);
-    let bundler = new ElementBundler(writer, this.options);
+    let bundler = new ElementBundler(entryNode, this.options.vulcanizeOptions);
 
     return new MergeTrees([ tree, bundler ], {
       overwrite: true,
