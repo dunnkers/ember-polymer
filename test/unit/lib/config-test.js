@@ -19,7 +19,7 @@ describe('config', function() {
 
   it('loads it with options', function() {
     app.options['ember-polymer'] = {
-      vulcanizeOptions: {
+      bundlerOptions: {
         stripExcludes: ['.*paper-styles\.html.*']
       }
     };
@@ -45,19 +45,19 @@ describe('config', function() {
     assert.equal(this.options.relativeHtmlImportsFile, 'app/elements.html');
   });
 
-  it('wrong vulcanizeOutput extension throws an error', function() {
+  it('wrong bundlerOutput extension throws an error', function() {
     assert.throws(() => {
-      this.options.vulcanizeOutput = 'elements.wrongextension';
+      this.options.bundlerOutput = 'elements.wrongextension';
     }, Error);
   });
 
-  it('assigns input and output to vulcanizeOptions', function() {
+  it('assigns input and output to bundlerOptions', function() {
     this.options.htmlImportsFile = 'app/elements.html';
-    this.options.vulcanizeOutput = 'vulcanized.html';
-    this.options.vulcanizeOptions = {};
-    assert.deepEqual(this.options.vulcanizeOptions, {
+    this.options.bundlerOutput = 'bundled.html';
+    this.options.bundlerOptions = {};
+    assert.deepEqual(this.options.bundlerOptions, {
       input: 'elements.html',
-      output: 'vulcanized.html'
+      output: 'bundled.html'
     });
   });
 });

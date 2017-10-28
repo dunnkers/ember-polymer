@@ -95,27 +95,27 @@ Defaults to `app/elements.html`.
   htmlImportsFile: 'app/elements.html'
 ```
 
-#### vulcanizeOptions
+#### bundlerOptions
 
-Allows you to set [options](https://github.com/Polymer/vulcanize#using-vulcanize-programmatically) used in [vulcanize](https://github.com/Polymer/vulcanize).
+Allows you to set [options](https://github.com/Polymer/polymer-bundler#using-polymer-bundler-programmatically) used in [polymer-bundler](https://github.com/Polymer/polymer-bundler).
 
 Defaults to:
 
 ```js
-  vulcanizeOptions: {
+  bundlerOptions: {
     inlineCss: true,
     inlineScripts: true
   }
 ```
 
-#### vulcanizeOutput
+#### bundlerOutput
 
-The output file produced by [vulcanize](https://github.com/Polymer/vulcanize) for all vulcanized html code and styling.
+The output file produced by [polymer-bundler](https://github.com/Polymer/polymer-bundler) for all bundled html code and styling.
 
-Defaults to `assets/vulcanized.html`.
+Defaults to `assets/bundled.html`.
 
 ```js
-  vulcanizeOutput: 'assets/vulcanized.html'
+  bundlerOutput: 'assets/bundled.html'
 ```
 
 ## About

@@ -4,7 +4,7 @@ import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | about');
 
-test('renders custom elements -> vulcanized.html is loaded correctly', function(assert) {
+test('renders custom elements -> bundled.html is loaded correctly', function(assert) {
   visit('/about');
   assert.expect(3);
 

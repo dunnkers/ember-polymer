@@ -21,10 +21,10 @@ module.exports = {
     app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents-lite.js`);
   },
 
-  // insert polymer and vulcanized elements
+  // insert polymer and bundled elements
   contentFor(type, config) {
     if (type === 'head') {
-      let href = config.rootURL + this.options.vulcanizeOutput;
+      let href = config.rootURL + this.options.bundlerOutput;
 
       return `<link rel="import" href="${href}">`;
     }
@@ -42,7 +42,7 @@ module.exports = {
     let entryNode = fileWriter(filepath, contents);
 
     // merge normal tree and our bundler tree
-    let bundler = new ElementBundler(entryNode, this.options.vulcanizeOptions);
+    let bundler = new ElementBundler(entryNode, this.options.bundlerOptions);
 
     return new MergeTrees([ tree, bundler ], {
       overwrite: true,
