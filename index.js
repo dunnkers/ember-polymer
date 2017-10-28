@@ -15,7 +15,7 @@ module.exports = {
 
     // config
     let app = appOrAddon.app || appOrAddon;
-    this.options = new Config(app);
+    this.options = new Config(app, this.ui);
 
     // import webcomponentsjs polyfill library
     app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents-lite.js`);
