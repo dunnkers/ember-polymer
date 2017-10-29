@@ -1,12 +1,14 @@
 /* eslint-env node */
 'use strict';
 const path = require('path');
+// broccoli plugins
 const MergeTrees = require('broccoli-merge-trees');
-const Config = require('./lib/config');
 const ElementBundler = require('./lib/bundler');
-const DepWriter = require('./lib/dep-writer');
-const depScraper = require('./lib/dep-scraper');
-const depNormalizer = require('./lib/dep-normalizer');
+const ElementWriter = require('./lib/writer');
+// internals
+const Config = require('./lib/config');
+const scrapeDeps = require('./lib/scraper');
+const extractDeps = require('./lib/extractor');
 
 module.exports = {
   name: 'ember-polymer',
@@ -39,20 +41,20 @@ module.exports = {
     // auto element import
     let bowerPath = path.join(this.options.projectRoot,
                                    this.project.bowerDirectory);
-    let bowerPackages = depScraper(this.project.bowerDependencies(),
+    let bowerPackages = scrapeDeps(this.project.bowerDependencies(),
                                    bowerPath, 'bower.json');
-    let npmPackages = depScraper(this.project.dependencies(),
+    let npmPackages = scrapeDeps(this.project.dependencies(),
                                  this.project.nodeModulesPath, 'package.json');
     let packages = bowerPackages.concat(npmPackages);
     let exclude = (pkg) => !this.options.excludeElements.includes(pkg.name);
     packages = packages.filter(exclude).map((pkg) => pkg.elementPath);
 
     // manual element import
-    let manualPackages = depNormalizer(this.options.htmlImportsFile);
+    let manualPackages = extractDeps(this.options.htmlImportsFile);
 
     // write and bundle
     let filepath = path.basename(this.options.htmlImportsFile);
-    let writer = new DepWriter(packages.concat(manualPackages), filepath);
+    let writer = new ElementWriter(packages.concat(manualPackages), filepath);
     let bundler = new ElementBundler(writer, this.options.bundlerOptions);
 
     // TODO: add warnings for unused manuals, add warnings for duplicate imports
