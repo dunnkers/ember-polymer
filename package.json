@@ -64,7 +64,6 @@
     "polymer-project"
   ],
   "dependencies": {
-    "broccoli-file-creator": "^1.1.1",
     "broccoli-merge-trees": "^2.0.0",
     "broccoli-plugin": "^1.3.0",
     "ember-cli-babel": "^6.8.2",
