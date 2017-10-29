@@ -44,7 +44,8 @@ module.exports = {
     let npmPackages = depScraper(this.project.dependencies(),
                                  this.project.nodeModulesPath, 'package.json');
     let packages = bowerPackages.concat(npmPackages);
-    packages = packages.map((pkg) => pkg.elementPath);
+    let exclude = (pkg) => !this.options.excludeElements.includes(pkg.name);
+    packages = packages.filter(exclude).map((pkg) => pkg.elementPath);
 
     // manual element import
     let manualPackages = depNormalizer(this.options.htmlImportsFile);
