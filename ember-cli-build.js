@@ -7,10 +7,7 @@ const path = require('path');
 module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
     'ember-polymer': {
-      htmlImportsFile: path.join('tests', 'dummy', 'app', 'elements.html'),
-      bundlerOptions: {
-        stripExcludes: ['.*paper-styles\.html.*']
-      }
+      htmlImportsFile: path.join('tests', 'dummy', 'app', 'elements.html')
     }
   });
 
