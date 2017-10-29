@@ -55,7 +55,10 @@ module.exports = {
     // write and bundle
     let filepath = path.basename(this.options.htmlImportsFile);
     let writer = new ElementWriter(packages.concat(manualPackages), filepath);
-    let bundler = new ElementBundler(writer, this.options.bundlerOptions);
+    let bundler = new ElementBundler(writer, {
+      input: filepath,
+      output: this.options.bundlerOutput
+    }, this.options.bundlerOptions);
 
     // TODO: add warnings for unused manuals, add warnings for duplicate imports
 
