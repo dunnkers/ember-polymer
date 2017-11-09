@@ -33,14 +33,4 @@ describe('config', function() {
       this.options.bundlerOutput = 'elements.wrongextension';
     }, Error);
   });
-
-  it('assigns input and output to bundlerOptions', function() {
-    this.options.htmlImportsFile = 'app/elements.html';
-    this.options.bundlerOutput = 'bundled.html';
-    this.options.bundlerOptions = {};
-    assert.deepEqual(this.options.bundlerOptions, {
-      input: 'elements.html',
-      output: 'bundled.html'
-    });
-  });
 });
