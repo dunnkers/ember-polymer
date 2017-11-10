@@ -6,10 +6,10 @@ module.exports = {
   afterInstall: function() {
       return this.addBowerPackagesToProject([{
       name: 'polymer',
-      target: '1.9.1'
+      target: '^2.2.0'
     }, {
       name: 'webcomponentsjs',
-      target: '0.7.24'
+      target: '^1.0.17'
     }]);
   }
 };
