@@ -7,10 +7,10 @@ module.exports = {
 
   bowerDependencies() {
     return {
-      "paper-elements": "x.x.x",
       "iron-icons": "x.x.x",
-      "some-non-existant": "x.x.x",
-      "ember": "x.x.x"
+      "moment": "x.x.x",
+      "paper-button": "x.x.x",
+      "paper-elements": "x.x.x"
     };
   },
 
