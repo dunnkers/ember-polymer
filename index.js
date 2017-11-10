@@ -21,7 +21,9 @@ module.exports = {
     this.options = new Config(app, this.ui);
 
     // import webcomponentsjs polyfill library
-    app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents-${this.options.polyfillBundle}.js`);
+    if (this.options.polyfillBundle && this.options.polyfillBundle !== 'none') {
+      app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents-${this.options.polyfillBundle}.js`);
+    }
   },
 
   // insert polymer and bundled elements
