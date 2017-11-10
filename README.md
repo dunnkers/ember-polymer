@@ -1,7 +1,11 @@
 # ember-polymer
 [![Build Status](https://travis-ci.org/dunnkers/ember-polymer.svg?branch=master)](https://travis-ci.org/dunnkers/ember-polymer) [![Ember Observer Score](https://emberobserver.com/badges/ember-polymer.svg)](https://emberobserver.com/addons/ember-polymer)  [![Coverage Status](https://coveralls.io/repos/github/dunnkers/ember-polymer/badge.svg?branch=master)](https://coveralls.io/github/dunnkers/ember-polymer?branch=master)
 
-Be cool and use [Polymer](https://www.polymer-project.org/1.0/) and Ember together! This addon integrates Polymer with Ember, so you can use the power of custom web components in your ember apps today.
+Be cool and use [Polymer](https://www.polymer-project.org) and Ember together! This addon integrates Polymer with Ember, so you can use the power of custom web components in your ember apps today.
+
+### Polymer 2.0
+
+This addon has been updated to for Polymer 2.0! Still want 1.0? Check out the [1.x branch](https://github.com/dunnkers/ember-polymer/tree/1.0).
 
 ## Why
 
