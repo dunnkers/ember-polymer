@@ -122,6 +122,16 @@ Defaults to `assets/bundled.html`.
   bundlerOutput: 'assets/bundled.html'
 ```
 
+#### polyfillBundle
+
+The polyfill bundle to use. Can be one of `hi`, `hi-ce`, `hi-sd-ce`, `sd-ce` or `lite`. See the webcomponentsjs [how-to-use](https://github.com/webcomponents/webcomponentsjs#how-to-use) page.
+
+Defaults to `lite`.
+
+```js
+  polyfillBundle: 'lite'
+```
+
 ## About
 
 This addon was sponsored by [Fabriquartz](http://www.fabriquartz.com/), a startup based in The Netherlands.
