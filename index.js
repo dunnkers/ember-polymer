@@ -46,21 +46,28 @@ module.exports = {
     let npmPackages = scrapeDeps(this.project.dependencies(),
                                  this.project.nodeModulesPath, 'package.json');
     let packages = bowerPackages.concat(npmPackages);
-    let exclude = (pkg) => !this.options.excludeElements.includes(pkg.name);
-    packages = packages.filter(exclude).map((pkg) => pkg.elementPath);
+    let exclude = pkg => !this.options.excludeElements.includes(pkg.name);
+    let elementPaths = packages.filter(exclude).map(pkg => pkg.elementPath);
 
     // manual element import
-    let manualPackages = extractDeps(this.options.htmlImportsFile);
+    let manualPackagePaths = extractDeps(this.options.htmlImportsFile);
+    elementPaths = elementPaths.concat(manualPackagePaths);
+
+    // check for duplicates
+    elementPaths.filter((ep, i, eps) => eps.includes(ep, i + 1)).forEach(ep => {
+      let relativePath = path.relative(this.options.projectRoot, ep);
+      this.ui.writeInfoLine(`The html import \`${relativePath}\` was already ` +
+                            `automatically imported ✨  You can remove this ` +
+                            `import. (ember-polymer)`);
+    });
 
     // write and bundle
     let filepath = path.basename(this.options.htmlImportsFile);
-    let writer = new ElementWriter(packages.concat(manualPackages), filepath);
+    let writer = new ElementWriter(elementPaths, filepath);
     let bundler = new ElementBundler(writer, {
       input: filepath,
       output: this.options.bundlerOutput
     }, this.options.bundlerOptions);
-
-    // TODO: add warnings for unused manuals, add warnings for duplicate imports
 
     // merge normal tree and our bundler tree
     return new MergeTrees([ tree, bundler ], {
