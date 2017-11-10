@@ -12,7 +12,7 @@ Polymer enables you to use any element on [webcomponents.org](https://www.webcom
 ## Installation
 
 ```shell
-ember install ember-polymer
+ember install ember-polymer@^1.1.0
 ```
 
 ## Usage
