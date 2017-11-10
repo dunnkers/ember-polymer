@@ -124,12 +124,24 @@ Defaults to `assets/bundled.html`.
 
 #### polyfillBundle
 
-The polyfill bundle to use. Can be one of `hi`, `hi-ce`, `hi-sd-ce`, `sd-ce`, `lite` or `none` for no polyfills. See the webcomponentsjs [how-to-use](https://github.com/webcomponents/webcomponentsjs#how-to-use) page.
+The polyfill bundle to use. Can be one of `hi`, `hi-ce`, `hi-sd-ce`, `sd-ce`, `lite`, `loader` or `none` for no polyfills. See the webcomponentsjs [how-to-use](https://github.com/webcomponents/webcomponentsjs#how-to-use) page.
 
 Defaults to `lite`.
 
 ```js
   polyfillBundle: 'lite'
+```
+
+#### globalPolymerSettings
+
+Allows you to set global Polymer Settings as described in the [Global Polymer settings](https://www.polymer-project.org/2.0/docs/devguide/settings) article.
+
+Defaults to ``.
+
+```js
+  globalPolymerSettings: {
+    rootPath: '/your/application/root'
+  }
 ```
 
 ## About
