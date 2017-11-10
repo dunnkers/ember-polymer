@@ -118,6 +118,19 @@ Defaults to `assets/vulcanized.html`.
   vulcanizeOutput: 'assets/vulcanized.html'
 ```
 
+#### globalPolymerSettings
+
+Allows you to set global Polymer Settings as described in the [Global Polymer settings](https://www.polymer-project.org/1.0/docs/devguide/settings) article.
+
+Defaults to ``.
+
+```js
+  globalPolymerSettings: {
+    rootPath: '/your/application/root'
+  }
+```
+
+
 ## About
 
 This addon was sponsored by [Fabriquartz](http://www.fabriquartz.com/), a startup based in The Netherlands.

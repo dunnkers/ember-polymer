@@ -39,12 +39,20 @@ module.exports = {
   contentFor(type, config) {
     if (type === 'head') {
       let href = config.rootURL + this.options.vulcanizeOutput;
+      let content = `<script>
+                       window.Polymer = window.Polymer || {};
+                       window.Polymer.dom = "shadow";
+                     </script>
+                     <link rel="import" href="${href}">`;
 
-      return `<script>
-                window.Polymer = window.Polymer || {};
-                window.Polymer.dom = "shadow";
-              </script>
-              <link rel="import" href="${href}">`;
+      if (this.options.globalPolymerSettings) {
+        let settings = JSON.stringify(this.options.globalPolymerSettings);
+        content += `<script>
+                      window.Polymer = ${settings};
+                    </script>`
+      }
+
+      return content;
     }
   },
 
