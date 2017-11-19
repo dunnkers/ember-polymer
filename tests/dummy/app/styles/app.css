@@ -23,3 +23,9 @@ paper-card {
 vaadin-date-picker, paper-input {
   width: 300px;
 }
+
+.github-logo {
+  width: 38px;
+  height: 38px;
+  margin-right: 10px;
+}
