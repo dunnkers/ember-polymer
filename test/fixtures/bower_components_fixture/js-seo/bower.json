@@ -1,0 +1,17 @@
+{
+  "name": "js-seo",
+  "homepage": "https://github.com/p3sn/js-seo",
+  "authors": [
+    "Peter Driessen - info@studioio.io"
+  ],
+  "description": "Optimize your javascript application for the googlebot with this webcomponent",
+  "main": "js-seo.html",
+  "license": "Apache-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

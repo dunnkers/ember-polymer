@@ -1,0 +1,85 @@
+<!-- 
+    Author: Peter Driessen
+    Google Top Contributor at the Google Webmaster Central Help Forum 
+    If you have any questions or feedback: info@studioio.io
+-->
+
+<script>
+    'use strict'
+
+    class OptimizeJS extends HTMLElement {
+
+        constructor() {
+            super();
+        }
+
+        get settings() {
+            let s = this.getAttribute('settings');
+            console.log('s', s);
+            return s ? JSON.parse(s) : [];
+        }
+
+        set settings(val) {
+            this.setAttribute('settings', JSON.stringify(val));
+            console.log('val', val);
+            this._updateDOM(); // Update prices when new symbols are set.
+        }
+
+        _updateDOM() {
+            console.log('update DOM');
+            var settings = this.settings;
+            if (typeof settings !== 'object') {
+                console.warn('SEO Component: settings is not an object');
+                return;
+            }
+            if (typeof settings.title === 'string') this._updateTitle(settings.title);
+            if (typeof settings.description === 'string') this._updateDescription(settings.description);
+            if (typeof settings.canonical === 'string') this._updateCanonical(settings.canonical);
+            let index = (typeof settings.index !== 'undefined' && settings.index.toLowerCase() === 'noindex') ?
+                'noindex' : 'index';
+            let follow = (typeof settings.follow !== 'undefined' && settings.follow.toLowerCase() === 'nofollow') ?
+                'nofollow' : 'follow';
+            this._updateRobots(index, follow);
+        }
+
+        _updateTitle(title) {
+            document.title = title;
+        }
+
+        _updateDescription(descr) {
+            this._updateElement('meta', 'name=description', {
+                'content': descr
+            })
+        }
+
+        _updateCanonical(url) {
+            this._updateElement('link', 'rel=canonical', {
+                'href': url
+            })
+        }
+
+        _updateRobots(index, follow) {
+            this._updateElement('meta', 'name=robots', {
+                'content': index + ', ' + follow
+            })
+        }
+
+        _updateElement(tag, identifier, attributes) {
+            let selector = tag + "[" + identifier + "]";
+            let el = document.querySelector(selector);
+            if (el) {
+                console.log(attributes);
+                Object.keys(attributes).forEach(function (key) {
+                    el.setAttribute(key, attributes[key]);
+                });
+            } else {
+                el = document.createElement(tag);
+                Object.keys(attributes).forEach(function (key) {
+                    el.setAttribute(key, attributes[key]);
+                });
+                document.getElementsByTagName('head')[0].appendChild(el);
+            }
+        }
+    }
+    window.customElements.define('js-seo', OptimizeJS);
+</script>

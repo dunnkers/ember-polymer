@@ -10,7 +10,8 @@ module.exports = {
       "iron-icons": "x.x.x",
       "moment": "x.x.x",
       "paper-button": "x.x.x",
-      "paper-elements": "x.x.x"
+      "paper-elements": "x.x.x",
+      "js-seo": "x.x.x"
     };
   },
 
