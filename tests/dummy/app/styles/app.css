@@ -29,3 +29,13 @@ vaadin-date-picker, paper-input {
   height: 38px;
   margin-right: 10px;
 }
+
+app-drawer-layout:not([narrow]) [drawer-toggle] {
+  display: none;
+}
+
+app-header, app-toolbar, paper-tabs {
+  background-color: #4285f4;
+  color: white;
+
+}
