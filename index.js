@@ -7,7 +7,7 @@ const ElementBundler = require('./lib/bundler');
 const ElementWriter = require('./lib/writer');
 // internals
 const Config = require('./lib/config');
-const scrapeDeps = require('./lib/scraper');
+const { scrapeDeps } = require('./lib/scraper');
 const extractDeps = require('./lib/extractor');
 
 module.exports = {
