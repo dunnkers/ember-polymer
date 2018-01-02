@@ -1,6 +1,6 @@
-import Ember from 'ember';
 import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
+import $ from 'jquery';
 
 moduleForAcceptance('Acceptance | Polymer | index');
 
@@ -21,7 +21,7 @@ test('renders custom elements', function(assert) {
       assert.ok(button.shadowRoot || button.shadyRoot,
         'paper-button has shadowRoot');
 
-      assert.equal(Ember.$('paper-button').attr('role'), 'button',
+      assert.equal($('paper-button').attr('role'), 'button',
         'paper-button rendered successfully');
 
       done();

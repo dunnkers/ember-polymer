@@ -10,7 +10,8 @@
     "build": "ember build",
     "start": "ember server",
     "test": "ember try:each",
-    "test-node": "./node_modules/mocha/bin/_mocha test/**/*-test.js"
+    "test-node": "./node_modules/mocha/bin/_mocha test/**/*-test.js",
+    "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,8 @@
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.5.0",
     "ember-source": "^2.18.0",
+    "eslint-plugin-ember": "^5.0.3",
+    "eslint-plugin-node": "^5.2.1",
     "greenkeeper-lockfile": "^1.10.0",
     "istanbul": "^0.4.5",
     "loader.js": "^4.6.0",
