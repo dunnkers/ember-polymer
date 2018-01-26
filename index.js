@@ -52,7 +52,7 @@ module.exports = {
     let bowerPackages = scrapeDeps(this.project.bowerDependencies(),
                                    bowerPath, 'bower.json');
     let npmPackages = scrapeDeps(this.project.dependencies(),
-                                 this.project.nodeModulesPath, 'package.json');
+                                 path.resolve('node_modules'), 'package.json');
     let packages = bowerPackages.concat(npmPackages);
     let exclude = pkg => !this.options.excludeElements.includes(pkg.name);
     let elementPaths = packages.filter(exclude).map(pkg => pkg.elementPath);
