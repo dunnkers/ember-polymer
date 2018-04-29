@@ -7,11 +7,11 @@ module.exports = {
       return this.addBowerPackagesToProject([
         {
           name: 'polymer',
-          target: '^2.3.1'
+          target: '^2.6.0'
         },
         {
           name: 'webcomponentsjs',
-          target: '^1.0.22'
+          target: '^1.2.0'
         }
       ]);
   }
