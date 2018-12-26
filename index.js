@@ -35,6 +35,8 @@ module.exports = {
         href = this.options.bundlerOutput;
       }
 
+      let content = `<link rel="import" href="${href}">`;
+
       if (this.options.globalPolymerSettings) {
         let settings = JSON.stringify(this.options.globalPolymerSettings);
         content += `<script> window.Polymer = ${settings}; </script>`
