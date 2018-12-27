@@ -31,7 +31,7 @@ module.exports = {
     if (type === 'head') {
       let href = path.join(config.rootURL, this.options.bundlerOutput);
 
-      if(config['ember-polymer'].useRelativePath) {
+      if(this.options.useRelativePath) {
         href = this.options.bundlerOutput;
       }
 
