@@ -2,65 +2,56 @@
   "name": "ember-polymer",
   "version": "2.2.0",
   "description": "Allows you to use Polymer in your Ember application.",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
   "scripts": {
     "build": "ember build",
-    "start": "ember server",
-    "test": "ember try:each",
+    "test:all": "ember try:each",
     "test-node": "./node_modules/mocha/bin/_mocha test/**/*-test.js",
-    "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dunnkers/ember-polymer.git"
+    "lint:hbs": "ember-template-lint .",
+    "lint:js": "eslint .",
+    "start": "ember server",
+    "test": "ember test"
   },
   "engines": {
-    "node": ">= 6.0.0"
+    "node": "6.* || 8.* || >= 10.*"
   },
-  "author": {
-    "name": "Jeroen Overschie",
-    "email": "info@periodpoint.com",
-    "url": "https://github.com/dunnkers"
-  },
-  "license": "MIT",
   "devDependencies": {
+    "@ember/optional-features": "^0.6.3",
     "bower": "^1.8.4",
-    "broccoli-asset-rev": "^2.6.0",
+    "broccoli-asset-rev": "^2.7.0",
     "codeclimate-test-reporter": "^0.5.0",
     "console-ui": "^2.1.0",
     "coveralls": "^3.0.0",
-    "ember-ajax": "^3.1.0",
-    "ember-cli": "^2.18.0",
+    "ember-cli": "~3.7.1",
     "ember-cli-app-version": "^3.2.0",
-    "ember-cli-dependency-checker": "^2.1.0",
+    "ember-cli-dependency-checker": "^3.0.0",
     "ember-cli-deploy": "^1.0.2",
     "ember-cli-deploy-build": "^1.1.1",
     "ember-cli-deploy-git": "^1.3.1",
     "ember-cli-eslint": "^4.2.3",
-    "ember-cli-htmlbars-inline-precompile": "^1.0.2",
-    "ember-cli-inject-live-reload": "^1.7.0",
-    "ember-cli-qunit": "^4.2.1",
+    "ember-cli-htmlbars-inline-precompile": "^1.0.3",
+    "ember-cli-inject-live-reload": "^1.8.2",
     "ember-cli-release": "^1.0.0-beta.2",
-    "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.1",
+    "ember-cli-template-lint": "^1.0.0-beta.1",
     "ember-cli-test-loader": "^2.2.0",
-    "ember-cli-uglify": "^2.0.0",
+    "ember-cli-uglify": "^2.1.0",
     "ember-disable-prototype-extensions": "^1.1.3",
     "ember-export-application-global": "^2.0.0",
-    "ember-load-initializers": "^1.0.0",
-    "ember-resolver": "^4.5.5",
-    "ember-source": "^2.18.0",
-    "ember-try": "^1.0.0-beta.0",
-    "eslint-plugin-ember": "^5.0.3",
-    "eslint-plugin-node": "^6.0.0",
+    "ember-load-initializers": "^1.1.0",
+    "ember-maybe-import-regenerator": "^0.1.6",
+    "ember-qunit": "^3.4.1",
+    "ember-resolver": "^5.0.1",
+    "ember-source": "~3.7.0",
+    "ember-source-channel-url": "^1.1.0",
+    "ember-try": "^1.0.0",
+    "eslint-plugin-ember": "^5.2.0",
+    "eslint-plugin-node": "^7.0.1",
     "greenkeeper-lockfile": "^1.12.0",
     "istanbul": "^0.4.5",
-    "loader.js": "^4.6.0",
+    "loader.js": "^4.7.0",
     "mocha": "^5.0.0",
-    "mocha-lcov-reporter": "^1.3.0"
+    "mocha-lcov-reporter": "^1.3.0",
+    "qunit-dom": "^0.8.0"
   },
   "keywords": [
     "ember-addon",
@@ -69,11 +60,25 @@
     "custom elements",
     "polymer-project"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dunnkers/ember-polymer.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Jeroen Overschie",
+    "email": "info@periodpoint.com",
+    "url": "https://github.com/dunnkers"
+  },
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
   "dependencies": {
     "broccoli-merge-trees": "^3.0.0",
     "broccoli-plugin": "^1.3.0",
-    "ember-cli-babel": "^6.11.0",
-    "ember-cli-htmlbars": "^2.0.3",
+    "ember-cli-babel": "^7.1.2",
+    "ember-cli-htmlbars": "^3.0.0",
     "fs-extra": "^6.0.0",
     "parse5": "^4.0.0",
     "path": "^0.12.7",
