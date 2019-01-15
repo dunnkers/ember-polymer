@@ -14,20 +14,10 @@
 /connect.lock
 /coverage/
 /libpeerconnection.log
-<<<<<<< HEAD
-npm-debug.log*
-yarn-error.log
-testem.log
-.DS_Store
-||||||| parent of 3b112e4... message
-npm-debug.log*
-yarn-error.log
-testem.log
-=======
 /npm-debug.log*
 /testem.log
 /yarn-error.log
->>>>>>> 3b112e4... message
+/tags*
 
 # ember-try
 /.node_modules.ember-try/
