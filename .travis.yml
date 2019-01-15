@@ -65,6 +65,10 @@ before_install:
   - npm install -g npm@6
   - npm --version
 
+install:
+  - npm ci
+  - bower install
+
 script:
   - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip_cleanup
   - npm run test:node
