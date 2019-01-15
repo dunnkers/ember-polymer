@@ -11,81 +11,87 @@ const { scrapeDeps } = require('./lib/scraper');
 const extractDeps = require('./lib/extractor');
 
 module.exports = {
-  name: require('./package').name,
+	name: require('./package').name,
 
-  included(appOrAddon) {
-    this._super.included.apply(this, arguments);
+	included(appOrAddon) {
+		this._super.included.apply(this, arguments);
 
-    // config
-    let app = appOrAddon.app || appOrAddon;
-    this.options = new Config(app, this.ui);
+		// config
+		const app = appOrAddon.app || appOrAddon;
 
-    // import webcomponentsjs polyfill library
-    if (this.options.polyfillBundle && this.options.polyfillBundle !== 'none') {
-      app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents-${this.options.polyfillBundle}.js`);
-    }
-  },
+		this.options = new Config(app, this.ui);
 
-  // insert polymer and bundled elements
-  contentFor(type, config) {
-    if (type === 'head') {
-      let href = path.join(config.rootURL, this.options.bundlerOutput);
+		// import webcomponentsjs polyfill library
+		if (this.options.polyfillBundle && this.options.polyfillBundle !== 'none') {
+			app.import(`${app.bowerDirectory}/webcomponentsjs/webcomponents-${this.options.polyfillBundle}.js`);
+		}
+	},
 
-      if(this.options.useRelativePath) {
-        href = this.options.bundlerOutput;
-      }
+	// insert polymer and bundled elements
+	contentFor(type, config) {
+		if (type === 'head') {
+			let href = path.join(config.rootURL, this.options.bundlerOutput);
 
-      let content = `<link rel="import" href="${href}">`;
+			if (this.options.useRelativePath) {
+				href = this.options.bundlerOutput;
+			}
 
-      if (this.options.globalPolymerSettings) {
-        let settings = JSON.stringify(this.options.globalPolymerSettings);
-        content += `<script> window.Polymer = ${settings}; </script>`
-      }
+			let content = `<link rel="import" href="${href}">`;
 
-      return content;
-    }
-  },
+			if (this.options.globalPolymerSettings) {
+				const settings = JSON.stringify(this.options.globalPolymerSettings);
 
-  postprocessTree(type, tree) {
-    if (type !== 'all') {
-      return tree;
-    }
+				content += `<script> window.Polymer = ${settings}; </script>`;
+			}
 
-    // auto element import
-    let bowerPath = path.join(this.options.projectRoot,
-                                   this.project.bowerDirectory);
-    let bowerPackages = scrapeDeps(this.project.bowerDependencies(),
-                                   bowerPath, 'bower.json');
-    let npmPackages = scrapeDeps(this.project.dependencies(),
-                                 path.resolve('node_modules'), 'package.json');
-    let packages = bowerPackages.concat(npmPackages);
-    let exclude = pkg => !this.options.excludeElements.includes(pkg.name);
-    let elementPaths = packages.filter(exclude).map(pkg => pkg.elementPath);
+			return content;
+		}
 
-    // manual element import
-    let manualPackagePaths = extractDeps(this.options.htmlImportsFile);
-    elementPaths = elementPaths.concat(manualPackagePaths);
+		return null;
+	},
 
-    // check for duplicates
-    elementPaths.filter((ep, i, eps) => eps.includes(ep, i + 1)).forEach(ep => {
-      let relativePath = path.relative(this.options.projectRoot, ep);
-      this.ui.writeInfoLine(`The html import \`${relativePath}\` was already ` +
-                            `automatically imported ✨  You can remove this ` +
-                            `import. (ember-polymer)`);
-    });
+	postprocessTree(type, tree) {
+		if (type !== 'all') {
+			return tree;
+		}
 
-    // write and bundle
-    let filepath = path.basename(this.options.htmlImportsFile);
-    let writer = new ElementWriter(elementPaths, filepath);
-    let bundler = new ElementBundler(writer, {
-      input: filepath,
-      output: this.options.bundlerOutput
-    }, this.options.bundlerOptions);
+		// auto element import
+		const bowerPath = path.join(this.options.projectRoot,
+			this.project.bowerDirectory);
+		const bowerPackages = scrapeDeps(this.project.bowerDependencies(),
+			bowerPath, 'bower.json');
+		const npmPackages = scrapeDeps(this.project.dependencies(),
+			path.resolve('node_modules'), 'package.json');
+		const packages = bowerPackages.concat(npmPackages);
+		const exclude = (pkg) => !this.options.excludeElements.includes(pkg.name);
+		let elementPaths = packages.filter(exclude).map((pkg) => pkg.elementPath);
 
-    // merge normal tree and our bundler tree
-    return new MergeTrees([ tree, bundler ], {
-      overwrite: true,
-      annotation: 'Merge (ember-polymer merge bundler with addon tree)'
-    });
-  }
+		// manual element import
+		const manualPackagePaths = extractDeps(this.options.htmlImportsFile);
+
+		elementPaths = elementPaths.concat(manualPackagePaths);
+
+		// check for duplicates
+		elementPaths.filter((ep, i, eps) => eps.includes(ep, i + 1)).forEach((ep) => {
+			const relativePath = path.relative(this.options.projectRoot, ep);
+
+			this.ui.writeInfoLine(`The html import \`${relativePath}\` was already ` +
+                            'automatically imported ✨  You can remove this ' +
+                            'import. (ember-polymer)');
+		});
+
+		// write and bundle
+		const filepath = path.basename(this.options.htmlImportsFile);
+		const writer = new ElementWriter(elementPaths, filepath);
+		const bundler = new ElementBundler(writer, {
+			input: filepath,
+			output: this.options.bundlerOutput
+		}, this.options.bundlerOptions);
+
+		// merge normal tree and our bundler tree
+		return new MergeTrees([tree, bundler], {
+			overwrite: true,
+			annotation: 'Merge (ember-polymer merge bundler with addon tree)'
+		});
+	}
 };

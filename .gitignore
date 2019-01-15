@@ -18,6 +18,7 @@
 /testem.log
 /yarn-error.log
 /tags*
+/.nyc_output
 
 # ember-try
 /.node_modules.ember-try/
