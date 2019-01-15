@@ -1,18 +1,16 @@
-import { test } from 'qunit';
-import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
+import { currentURL, visit } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
 import $ from 'jquery';
 
-moduleForAcceptance('Acceptance | about');
+module('Acceptance | about', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('renders custom elements -> bundled.html is loaded correctly', function(assert) {
-  visit('/about');
-  assert.expect(3);
+  test('renders custom elements -> bundled.html is loaded correctly', async function(assert) {
+    await visit('/about');
+    assert.expect(3);
 
-  andThen(function() {
     assert.equal(currentURL(), '/about');
-  });
-
-  andThen(function() {
     let done = assert.async();
 
     let testElement = () => {
