@@ -11,7 +11,7 @@ const { scrapeDeps } = require('./lib/scraper');
 const extractDeps = require('./lib/extractor');
 
 module.exports = {
-  name: 'ember-polymer',
+  name: require('./package').name,
 
   included(appOrAddon) {
     this._super.included.apply(this, arguments);
