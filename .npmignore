@@ -18,45 +18,12 @@
 /.watchmanconfig
 /bower.json
 /config/ember-try.js
-<<<<<<< HEAD
-/dist
-/tests
-/tmp
-/coverage/*
-**/.gitkeep
-.bowerrc
-.editorconfig
-.ember-cli
-.eslintrc.js
-.gitignore
-.watchmanconfig
-.travis.yml
-bower.json
-ember-cli-build.js
-testem.js
-||||||| parent of 3b112e4... message
-/dist
-/tests
-/tmp
-**/.gitkeep
-.bowerrc
-.editorconfig
-.ember-cli
-.eslintrc.js
-.gitignore
-.watchmanconfig
-.travis.yml
-bower.json
-ember-cli-build.js
-testem.js
-=======
 /CONTRIBUTING.md
 /ember-cli-build.js
 /testem.js
 /tests/
 /yarn.lock
 .gitkeep
->>>>>>> 3b112e4... message
 
 # ember-try
 /.node_modules.ember-try/
