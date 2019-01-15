@@ -1,5 +1,16 @@
-# ember-polymer
-[![Build Status](https://travis-ci.org/dunnkers/ember-polymer.svg?branch=master)](https://travis-ci.org/dunnkers/ember-polymer) [![Ember Observer Score](https://emberobserver.com/badges/ember-polymer.svg)](https://emberobserver.com/addons/ember-polymer)  [![Coverage Status](https://coveralls.io/repos/github/dunnkers/ember-polymer/badge.svg?branch=master)](https://coveralls.io/github/dunnkers/ember-polymer?branch=master)
+# ember-cli-polymer
+
+[![Build Status](https://travis-ci.org/BBVAEngineering/ember-cli-polymer.svg?branch=master)](https://travis-ci.org/BBVAEngineering/ember-cli-polymer)
+[![GitHub version](https://badge.fury.io/gh/BBVAEngineering%2Fember-cli-polymer.svg)](https://badge.fury.io/gh/BBVAEngineering%2Fember-cli-polymer)
+[![NPM version](https://badge.fury.io/js/ember-cli-polymer.svg)](https://badge.fury.io/js/ember-cli-polymer)
+[![Dependency Status](https://david-dm.org/BBVAEngineering/ember-cli-polymer.svg)](https://david-dm.org/BBVAEngineering/ember-cli-polymer)
+[![codecov](https://codecov.io/gh/BBVAEngineering/ember-cli-polymer/branch/master/graph/badge.svg)](https://codecov.io/gh/BBVAEngineering/ember-cli-polymer)
+[![Greenkeeper badge](https://badges.greenkeeper.io/BBVAEngineering/ember-cli-polymer.svg)](https://greenkeeper.io/)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-cli-polymer.svg)](https://emberobserver.com/addons/ember-cli-polymer)
+
+## Information
+
+[![NPM](https://nodei.co/npm/ember-cli-polymer.png?downloads=true&downloadRank=true)](https://nodei.co/npm/ember-cli-polymer/)
 
 Be cool and use [Polymer](https://www.polymer-project.org) and Ember together! This addon integrates Polymer with Ember, so you can use the power of custom web components in your ember apps today.
 
