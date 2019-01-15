@@ -1,26 +1,26 @@
 <app-drawer-layout fullbleed>
-  <app-drawer swipe-open slot="drawer">
-    <app-toolbar>
-      <div>Drawer</div>
-    </app-toolbar>
-    <paper-listbox selected="0">
-      <paper-item>Item 1</paper-item>
-      <paper-item>Item 2</paper-item>
-    </paper-listbox>
-  </app-drawer>
+	<app-drawer swipe-open slot="drawer">
+		<app-toolbar>
+			<div>Drawer</div>
+		</app-toolbar>
+		<paper-listbox selected="0">
+			<paper-item>Item 1</paper-item>
+			<paper-item>Item 2</paper-item>
+		</paper-listbox>
+	</app-drawer>
 
-  <app-header-layout fullbleed>
-    <app-header slot="header" fixed>
-      <app-toolbar>
-        <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-        <div main-title>Ember Polymer demo 🐹</div>
+	<app-header-layout fullbleed>
+		<app-header slot="header" fixed>
+			<app-toolbar>
+				<paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+				<div main-title>Ember Polymer demo 🐹</div>
 
-        <a href="https://github.com/dunnkers/ember-polymer" tabIndex="-1">
-          <img src="images/github.png" class="github-logo">
-        </a>
-      </app-toolbar>
-    </app-header>
+				<a href="https://github.com/dunnkers/ember-polymer" tabIndex="-1">
+					<img src="images/github.png" class="github-logo" alt="">
+				</a>
+			</app-toolbar>
+		</app-header>
 
-    <div class="outlet">{{outlet}}</div>
-  </app-header-layout>
+		<div class="outlet">{{outlet}}</div>
+	</app-header-layout>
 </app-drawer-layout>

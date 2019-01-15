@@ -3,7 +3,7 @@
 module.exports = {
 	extends: 'recommended',
 	rules: {
-		'no-bare-strings': true,
+		'no-bare-strings': false,
 		'block-indentation': 'tab',
 		'no-html-comments': true,
 		'no-nested-interactive': true,

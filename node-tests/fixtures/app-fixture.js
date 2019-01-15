@@ -2,8 +2,8 @@
 'use strict';
 
 module.exports = {
-  options: {},
-  project: {
-    root: '/computer'
-  }
+	options: {},
+	project: {
+		root: '/computer'
+	}
 };

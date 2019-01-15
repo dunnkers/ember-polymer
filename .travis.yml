@@ -31,6 +31,7 @@ jobs:
         - npm --version
       install:
         - if [[ $TRAVIS_BRANCH =~ greenkeeper || $TRAVIS_PULL_REQUEST_BRANCH =~ greenkeeper ]]; then npm install; else npm ci; fi
+        - bower install
       before_script:
         - greenkeeper-lockfile-update
       script:
@@ -65,7 +66,8 @@ before_install:
   - npm --version
 
 script:
-  - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO
+  - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip_cleanup
+  - npm run test:node
 
 stages:
   - "Tests"
