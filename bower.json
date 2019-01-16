@@ -1,5 +1,5 @@
 {
-  "name": "ember-polymer",
+  "name": "ember-cli-polymer",
   "dependencies": {
     "paper-button": "PolymerElements/paper-button#^2.0.0",
     "polymer": "^2.6.0",

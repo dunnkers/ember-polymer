@@ -66,14 +66,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/dunnkers/ember-polymer.git"
+    "url": "https://github.com/BBVAEngineering/ember-cli-polymer.git"
   },
   "license": "MIT",
-  "author": {
-    "name": "Jeroen Overschie",
-    "email": "info@periodpoint.com",
-    "url": "https://github.com/dunnkers"
-  },
+  "author": "BBVAEngineering",
   "directories": {
     "doc": "doc",
     "test": "tests"

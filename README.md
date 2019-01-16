@@ -27,7 +27,7 @@ Polymer enables you to use any element on [webcomponents.org](https://www.webcom
 ## Installation
 
 ```shell
-ember install ember-polymer
+ember install ember-cli-polymer
 ```
 
 ## Usage
@@ -38,7 +38,7 @@ To use a custom element, just install it through bower.
 bower install PolymerElements/paper-button --save
 ```
 
-Done! ember-polymer identifies this package as a custom element and imports it automatically! ✨ You can now use the element:
+Done! ember-cli-polymer identifies this package as a custom element and imports it automatically! ✨ You can now use the element:
 
 ```html
 <paper-button raised>Raised button</paper-button>
@@ -75,14 +75,14 @@ If an element is not automatically imported, it probably does not follow the pol
 The addon can be configured in `config/environment.js` as such:
 
 ```js
-ENV['ember-polymer'] = {
+ENV['ember-cli-polymer'] = {
   option: 'value'
 }
 ```
 
 #### autoElementImport
 
-Indicates whether elements should be imported automatically. ember-polymer automatically imports elements from bower and npm packages which have the `web-components` keyword and a valid [html import entry point](https://www.polymer-project.org/1.0/docs/tools/polymer-cli#element-project-layout). All elements at [customelements.io](https://customelements.io/) should be compatible.
+Indicates whether elements should be imported automatically. ember-cli-polymer automatically imports elements from bower and npm packages which have the `web-components` keyword and a valid [html import entry point](https://www.polymer-project.org/1.0/docs/tools/polymer-cli#element-project-layout). All elements at [customelements.io](https://customelements.io/) should be compatible.
 
 Disable if you want full control over imports yourself. Defaults to `true`.
 
