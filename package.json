@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-polymer",
-  "version": "2.2.0",
+  "version": "0.0.0-development",
   "description": "Allows you to use Polymer in your Ember application.",
   "scripts": {
     "build": "ember build",
