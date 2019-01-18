@@ -6,7 +6,7 @@ const path = require('path');
 
 module.exports = function(defaults) {
 	const app = new EmberAddon(defaults, {
-		'ember-cli-polymer': {
+		'ember-cli-polymer-bundler': {
 			htmlImportsFile: path.join('tests', 'dummy', 'app', 'elements.html')
 		}
 	});

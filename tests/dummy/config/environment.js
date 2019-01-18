@@ -46,7 +46,7 @@ module.exports = function(environment) {
 
 	if (environment === 'production') {
 		ENV.locationType = 'hash';
-		ENV.rootURL = '/ember-cli-polymer/';
+		ENV.rootURL = '/ember-cli-polymer-bundler/';
 	}
 
 	return ENV;

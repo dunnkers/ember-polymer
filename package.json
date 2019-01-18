@@ -1,5 +1,5 @@
 {
-  "name": "ember-cli-polymer",
+  "name": "ember-cli-polymer-bundler",
   "version": "0.0.0-development",
   "description": "Allows you to use Polymer in your Ember application.",
   "scripts": {
@@ -66,7 +66,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/BBVAEngineering/ember-cli-polymer.git"
+    "url": "https://github.com/BBVAEngineering/ember-cli-polymer-bundler.git"
   },
   "license": "MIT",
   "author": "BBVAEngineering",

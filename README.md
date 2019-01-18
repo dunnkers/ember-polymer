@@ -1,16 +1,16 @@
-# ember-cli-polymer
+# ember-cli-polymer-bundler
 
-[![Build Status](https://travis-ci.org/BBVAEngineering/ember-cli-polymer.svg?branch=master)](https://travis-ci.org/BBVAEngineering/ember-cli-polymer)
-[![GitHub version](https://badge.fury.io/gh/BBVAEngineering%2Fember-cli-polymer.svg)](https://badge.fury.io/gh/BBVAEngineering%2Fember-cli-polymer)
-[![NPM version](https://badge.fury.io/js/ember-cli-polymer.svg)](https://badge.fury.io/js/ember-cli-polymer)
-[![Dependency Status](https://david-dm.org/BBVAEngineering/ember-cli-polymer.svg)](https://david-dm.org/BBVAEngineering/ember-cli-polymer)
-[![codecov](https://codecov.io/gh/BBVAEngineering/ember-cli-polymer/branch/master/graph/badge.svg)](https://codecov.io/gh/BBVAEngineering/ember-cli-polymer)
-[![Greenkeeper badge](https://badges.greenkeeper.io/BBVAEngineering/ember-cli-polymer.svg)](https://greenkeeper.io/)
-[![Ember Observer Score](https://emberobserver.com/badges/ember-cli-polymer.svg)](https://emberobserver.com/addons/ember-cli-polymer)
+[![Build Status](https://travis-ci.org/BBVAEngineering/ember-cli-polymer-bundler.svg?branch=master)](https://travis-ci.org/BBVAEngineering/ember-cli-polymer-bundler)
+[![GitHub version](https://badge.fury.io/gh/BBVAEngineering%2Fember-cli-polymer-bundler.svg)](https://badge.fury.io/gh/BBVAEngineering%2Fember-cli-polymer-bundler)
+[![NPM version](https://badge.fury.io/js/ember-cli-polymer-bundler.svg)](https://badge.fury.io/js/ember-cli-polymer-bundler)
+[![Dependency Status](https://david-dm.org/BBVAEngineering/ember-cli-polymer-bundler.svg)](https://david-dm.org/BBVAEngineering/ember-cli-polymer-bundler)
+[![codecov](https://codecov.io/gh/BBVAEngineering/ember-cli-polymer-bundler/branch/master/graph/badge.svg)](https://codecov.io/gh/BBVAEngineering/ember-cli-polymer-bundler)
+[![Greenkeeper badge](https://badges.greenkeeper.io/BBVAEngineering/ember-cli-polymer-bundler.svg)](https://greenkeeper.io/)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-cli-polymer-bundler.svg)](https://emberobserver.com/addons/ember-cli-polymer-bundler)
 
 ## Information
 
-[![NPM](https://nodei.co/npm/ember-cli-polymer.png?downloads=true&downloadRank=true)](https://nodei.co/npm/ember-cli-polymer/)
+[![NPM](https://nodei.co/npm/ember-cli-polymer-bundler.png?downloads=true&downloadRank=true)](https://nodei.co/npm/ember-cli-polymer-bundler/)
 
 Be cool and use [Polymer](https://www.polymer-project.org) and Ember together! This addon integrates Polymer with Ember, so you can use the power of custom web components in your ember apps today.
 
@@ -27,7 +27,7 @@ Polymer enables you to use any element on [webcomponents.org](https://www.webcom
 ## Installation
 
 ```shell
-ember install ember-cli-polymer
+ember install ember-cli-polymer-bundler
 ```
 
 ## Usage
@@ -38,7 +38,7 @@ To use a custom element, just install it through bower.
 bower install PolymerElements/paper-button --save
 ```
 
-Done! ember-cli-polymer identifies this package as a custom element and imports it automatically! ✨ You can now use the element:
+Done! ember-cli-polymer-bundler identifies this package as a custom element and imports it automatically! ✨ You can now use the element:
 
 ```html
 <paper-button raised>Raised button</paper-button>
@@ -75,14 +75,14 @@ If an element is not automatically imported, it probably does not follow the pol
 The addon can be configured in `config/environment.js` as such:
 
 ```js
-ENV['ember-cli-polymer'] = {
+ENV['ember-cli-polymer-bundler'] = {
   option: 'value'
 }
 ```
 
 #### autoElementImport
 
-Indicates whether elements should be imported automatically. ember-cli-polymer automatically imports elements from bower and npm packages which have the `web-components` keyword and a valid [html import entry point](https://www.polymer-project.org/1.0/docs/tools/polymer-cli#element-project-layout). All elements at [customelements.io](https://customelements.io/) should be compatible.
+Indicates whether elements should be imported automatically. ember-cli-polymer-bundler automatically imports elements from bower and npm packages which have the `web-components` keyword and a valid [html import entry point](https://www.polymer-project.org/1.0/docs/tools/polymer-cli#element-project-layout). All elements at [customelements.io](https://customelements.io/) should be compatible.
 
 Disable if you want full control over imports yourself. Defaults to `true`.
 

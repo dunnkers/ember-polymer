@@ -77,7 +77,7 @@ module.exports = {
 
 			this.ui.writeInfoLine(`The html import \`${relativePath}\` was already ` +
                             'automatically imported ✨  You can remove this ' +
-                            'import. (ember-cli-polymer)');
+                            'import. (ember-cli-polymer-bundler)');
 		});
 
 		// write and bundle
@@ -91,7 +91,7 @@ module.exports = {
 		// merge normal tree and our bundler tree
 		return new MergeTrees([tree, bundler], {
 			overwrite: true,
-			annotation: 'Merge (ember-cli-polymer merge bundler with addon tree)'
+			annotation: 'Merge (ember-cli-polymer-bundler merge bundler with addon tree)'
 		});
 	}
 };

@@ -19,7 +19,7 @@ describe('config', () => {
 	});
 
 	it('loads it with options', function() {
-		app.options['ember-cli-polymer'] = {
+		app.options['ember-cli-polymer-bundler'] = {
 			bundlerOptions: {
 				stripExcludes: ['.*paper-styles.html.*']
 			}
