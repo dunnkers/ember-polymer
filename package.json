@@ -80,7 +80,7 @@
     "ember-cli-babel": "^7.1.2",
     "ember-cli-htmlbars": "^3.0.0",
     "fs-extra": "^7.0.1",
-    "parse5": "^4.0.0",
+    "parse5": "^5.1.0",
     "path": "^0.12.7",
     "polymer-analyzer": "^2.3.0",
     "polymer-bundler": "^3.1.1"
