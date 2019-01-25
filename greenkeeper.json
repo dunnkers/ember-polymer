@@ -1,5 +1,7 @@
 {
     "ignore": [
-        "ember-try"
+        "ember-try",
+        "polymer-analyzer",
+        "polymer-bundler"
     ]
 }
