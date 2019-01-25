@@ -42,7 +42,8 @@ jobs:
       after_script:
         - greenkeeper-lockfile-upload
       after_success:
-        - codecov --file=coverage/lcov.info
+        - codecov --file=coverage/node/lcov.info
+        - codecov --file=coverage/ember/lcov.info
 
     - stage: "Regression Tests"
       env: EMBER_TRY_SCENARIO=ember-lts-2.18
