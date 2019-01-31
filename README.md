@@ -72,10 +72,10 @@ If an element is not automatically imported, it probably does not follow the pol
 
 ### Config variables
 
-The addon can be configured in `config/environment.js` as such:
+The addon can be configured in `ember-cli-build.js` as such:
 
 ```js
-ENV['ember-cli-polymer-bundler'] = {
+'ember-cli-polymer-bundler': {
   option: 'value'
 }
 ```
