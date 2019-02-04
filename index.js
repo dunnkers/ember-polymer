@@ -36,13 +36,14 @@ module.exports = {
 				href = this.options.bundlerOutput;
 			}
 
-			let content = `<link rel="import" href="${href}">`;
+			let content;
 
 			if (this.options.globalPolymerSettings) {
 				const settings = JSON.stringify(this.options.globalPolymerSettings);
-
-				content += `<script> window.Polymer = ${settings}; </script>`;
+				content = `<script> window.Polymer = ${settings}; </script>`;
 			}
+
+			content += `<link rel="import" href="${href}">`;
 
 			return content;
 		}
