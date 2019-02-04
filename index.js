@@ -40,6 +40,7 @@ module.exports = {
 
 			if (this.options.globalPolymerSettings) {
 				const settings = JSON.stringify(this.options.globalPolymerSettings);
+
 				content = `<script> window.Polymer = ${settings}; </script>`;
 			}
 
