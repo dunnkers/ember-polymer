@@ -69,6 +69,16 @@ ENV['ember-polymer'] = {
 }
 ```
 
+Or in `ember-cli-build.js`:
+
+```js
+let app = new EmberApp(defaults, {
+  'ember-polymer': {
+    option: 'value'
+  }
+});
+  ```
+
 #### autoElementImport
 
 Indicates whether elements should be imported automatically. ember-polymer automatically imports elements from bower and npm packages which have the `web-components` keyword and a valid [html import entry point](https://www.polymer-project.org/1.0/docs/tools/polymer-cli#element-project-layout). All elements at [customelements.io](https://customelements.io/) should be compatible.
