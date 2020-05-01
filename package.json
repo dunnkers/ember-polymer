@@ -11,7 +11,9 @@
     "start": "ember server",
     "test": "ember try:each",
     "test-node": "./node_modules/mocha/bin/_mocha test/**/*-test.js",
-    "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests"
+    "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -77,10 +79,12 @@
     "parse5": "^4.0.0",
     "path": "^0.12.7",
     "polymer-analyzer": "^2.3.0",
-    "polymer-bundler": "^3.1.1"
+    "polymer-bundler": "^3.1.1",
+    "snyk": "^1.316.1"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
     "demoURL": "https://dunnkers.github.io/ember-polymer/"
-  }
+  },
+  "snyk": true
 }
